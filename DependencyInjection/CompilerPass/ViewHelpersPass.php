@@ -1,26 +1,32 @@
 <?php
 /**
+ * Copyright 2013 Bezalel Hermoso <bezalelhermoso@gmail.com>
  *
- * User: Bezalel
- * Date: 11/7/13
- * Time: 1:41 PM
+ * This project is free software released under the MIT license:
+ * http://www.opensource.org/licenses/mit-license.php
  */
 
 namespace Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass;
-
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
+/**
+ * Class ViewHelpersPass
+ *
+ * Registers tagged view helpers.
+ *
+ * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
+ * @package Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass
+ */
 class ViewHelpersPass implements CompilerPassInterface
 {
 
     /**
-     * You can modify the container here before it is dumped to PHP code.
-     *
+     * You can modify the container here before it is dumped to PHP code.     *
      * @param ContainerBuilder $container
-     *
+     * @throws \RuntimeException
      * @api
      */
     public function process(ContainerBuilder $container)

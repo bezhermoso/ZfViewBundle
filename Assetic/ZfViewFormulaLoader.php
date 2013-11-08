@@ -1,9 +1,9 @@
 <?php
 /**
+ * Copyright 2013 Bezalel Hermoso <bezalelhermoso@gmail.com>
  *
- * User: Bezalel
- * Date: 11/7/13
- * Time: 6:32 AM
+ * This project is free software released under the MIT license:
+ * http://www.opensource.org/licenses/mit-license.php
  */
 
 namespace Bzl\Bundle\ZfViewBundle\Assetic;
@@ -12,6 +12,16 @@ namespace Bzl\Bundle\ZfViewBundle\Assetic;
 use Assetic\Factory\Loader\FormulaLoaderInterface;
 use Assetic\Factory\Resource\ResourceInterface;
 
+/**
+ * Class ZfViewFormulaLoader
+ *
+ * Assetic formulae loader for ZfViewBundle.
+ *
+ * @todo Implement formula loader for ZfViewBundle
+ *
+ * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
+ * @package Bzl\Bundle\ZfViewBundle\Assetic
+ */
 class ZfViewFormulaLoader implements FormulaLoaderInterface
 {
 
@@ -28,6 +38,5 @@ class ZfViewFormulaLoader implements FormulaLoaderInterface
     public function load(ResourceInterface $resource)
     {
         return array();
-        // TODO: Implement load() method.
     }
 }

@@ -1,27 +1,34 @@
 <?php
 /**
+ * Copyright 2013 Bezalel Hermoso <bezalelhermoso@gmail.com>
  *
- * User: Bezalel
- * Date: 11/7/13
- * Time: 10:52 AM
+ * This project is free software released under the MIT license:
+ * http://www.opensource.org/licenses/mit-license.php
  */
 
 namespace Bzl\Bundle\ZfViewBundle\EventListener;
-
 
 use Bzl\Bundle\ZfViewBundle\Configuration\Rendering;
 use Bzl\Bundle\ZfViewBundle\ZfViewEngine;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Util\ClassUtils;
-use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Zend\EventManager\EventManager;
 use Zend\View\Model\ViewModel;
+
+/**
+ * Class KernelListener
+ *
+ * Hooks into kernel events in order to determine the rendering options defined in annotations.
+ * Also resolves an array or ViewModel controller outputs into a Response object.
+ *
+ * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
+ * @package Bzl\Bundle\ZfViewBundle\EventListener
+ */
 
 class KernelListener implements EventSubscriberInterface
 {
@@ -60,10 +67,8 @@ class KernelListener implements EventSubscriberInterface
     {
         return array(
             KernelEvents::CONTROLLER => 'onController',
-            KernelEvents::RESPONSE => 'onResponse',
             KernelEvents::VIEW => 'onView',
         );
-        // TODO: Implement getSubscribedEvents() method.
     }
 
     public function onView(GetResponseForControllerResultEvent $event)
@@ -82,7 +87,6 @@ class KernelListener implements EventSubscriberInterface
 
             /** @var $rendering Rendering */
             $rendering = $request->attributes->get('__rendering');
-
             $this->eventManager->trigger('render', $event);
 
             $viewModel = new ViewModel();
@@ -106,7 +110,6 @@ class KernelListener implements EventSubscriberInterface
             $response = $this->engine->renderResponse($viewModel);
             $event->setResponse($response);
         }
-
     }
 
     public function onController(FilterControllerEvent $event)
@@ -128,10 +131,7 @@ class KernelListener implements EventSubscriberInterface
         }
 
         $request = $event->getRequest();
-
         $request->attributes->set('__rendering', $methodRenderingConfig);
-
-
     }
 
     /**
@@ -140,16 +140,11 @@ class KernelListener implements EventSubscriberInterface
      */
     protected function getRenderingConfiguration(array $annotations)
     {
-        $configurations = array();
         foreach ($annotations as $configuration) {
             if ($configuration instanceof Rendering) {
                 return $configuration;
             }
         }
-    }
-
-    public function onResponse(FilterResponseEvent $event)
-    {
-        //$this->eventManager->trigger('')
+        return;
     }
 }

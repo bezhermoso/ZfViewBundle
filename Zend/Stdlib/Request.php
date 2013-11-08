@@ -1,9 +1,9 @@
 <?php
 /**
+ * Copyright 2013 Bezalel Hermoso <bezalelhermoso@gmail.com>
  *
- * User: Bezalel
- * Date: 11/7/13
- * Time: 7:20 AM
+ * This project is free software released under the MIT license:
+ * http://www.opensource.org/licenses/mit-license.php
  */
 
 namespace Bzl\Bundle\ZfViewBundle\Zend\Stdlib;
@@ -12,6 +12,14 @@ namespace Bzl\Bundle\ZfViewBundle\Zend\Stdlib;
 use Zend\Stdlib\RequestInterface;
 use Symfony\Component\HttpFoundation\Request as SfRequest;
 
+/**
+ * Class Request
+ *
+ * Decorates Symfony\HttpFoundation\Request with Zend\Stdlib\RequestInterface
+ *
+ * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
+ * @package Bzl\Bundle\ZfViewBundle\Zend\Stdlib
+ */
 
 class Request implements RequestInterface
 {
@@ -50,6 +58,7 @@ class Request implements RequestInterface
         if (isset($this->metadata[$key])) {
             return $this->metadata[$key];
         }
+        return;
     }
 
     /**
@@ -61,7 +70,6 @@ class Request implements RequestInterface
     public function setContent($content)
     {
         return;
-        // TODO: Implement setContent() method.
     }
 
     /**

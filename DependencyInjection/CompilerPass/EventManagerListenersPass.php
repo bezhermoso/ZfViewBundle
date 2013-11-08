@@ -1,9 +1,9 @@
 <?php
 /**
+ * Copyright 2013 Bezalel Hermoso <bezalelhermoso@gmail.com>
  *
- * User: Bezalel
- * Date: 11/7/13
- * Time: 10:21 AM
+ * This project is free software released under the MIT license:
+ * http://www.opensource.org/licenses/mit-license.php
  */
 
 namespace Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass;
@@ -13,6 +13,14 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
+/**
+ * Class EventManagerListenersPass
+ *
+ * Attaches tagged listeners to Zend\EventManager\EventManager instance
+ *
+ * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
+ * @package Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass
+ */
 class EventManagerListenersPass implements CompilerPassInterface
 {
 
@@ -34,13 +42,10 @@ class EventManagerListenersPass implements CompilerPassInterface
         $listeners = $container->findTaggedServiceIds('zend.event_listener');
 
         foreach ($listeners as $id => $tags) {
-
             $priority = 1;
-
             foreach ($tags as $attributes) {
                 $priority = isset($attributes['priority']) ? (int) $attributes['priority'] : $priority;
             }
-
             $eventManager
                 ->addMethodCall('attach', array(new Reference($id), $priority));
         }

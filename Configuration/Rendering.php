@@ -1,16 +1,21 @@
 <?php
 /**
+ * Copyright 2013 Bezalel Hermoso <bezalelhermoso@gmail.com>
  *
- * User: Bezalel
- * Date: 11/7/13
- * Time: 11:47 AM
+ * This project is free software released under the MIT license:
+ * http://www.opensource.org/licenses/mit-license.php
  */
 
 namespace Bzl\Bundle\ZfViewBundle\Configuration;
 
 /**
  * Class Rendering
+ *
+ * Annotation to define view files and other options.
+ *
+ * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
  * @package Bzl\Bundle\ZfViewBundle\Configuration
+ *
  * @Annotation
  */
 class Rendering

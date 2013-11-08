@@ -15,6 +15,14 @@ use Symfony\Component\Templating\TemplateNameParserInterface;
 use Zend\View\Renderer\RendererInterface as Renderer;
 use Zend\View\Resolver\ResolverInterface;
 
+/**
+ * Class LogicalNameResolver
+ *
+ * Resolves Symfony's template names to their actual paths for use in ViewModel.
+ *
+ * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
+ * @package Bzl\Bundle\ZfViewBundle\Zend\View\Resolver
+ */
 class LogicalNameResolver implements ResolverInterface
 {
     protected $loader;

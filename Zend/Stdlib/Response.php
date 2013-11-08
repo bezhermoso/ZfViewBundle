@@ -1,9 +1,9 @@
 <?php
 /**
+ * Copyright 2013 Bezalel Hermoso <bezalelhermoso@gmail.com>
  *
- * User: Bezalel
- * Date: 11/7/13
- * Time: 7:26 AM
+ * This project is free software released under the MIT license:
+ * http://www.opensource.org/licenses/mit-license.php
  */
 
 namespace Bzl\Bundle\ZfViewBundle\Zend\Stdlib;
@@ -12,6 +12,14 @@ namespace Bzl\Bundle\ZfViewBundle\Zend\Stdlib;
 use Zend\Stdlib\ResponseInterface;
 use Symfony\Component\HttpFoundation\Response as SfResponse;
 
+/**
+ * Class Response
+ *
+ * Decorates Symfony\HttpFoundation\Response with Zend\Stdlib\ResponseInterface
+ *
+ * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
+ * @package Bzl\Bundle\ZfViewBundle\Zend\Stdlib
+ */
 
 class Response implements ResponseInterface
 {
@@ -52,6 +60,7 @@ class Response implements ResponseInterface
         if (isset($this->metadata[$key])) {
             return $this->metadata[$key];
         }
+        return;
     }
 
     /**

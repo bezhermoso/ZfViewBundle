@@ -15,13 +15,18 @@ use Symfony\Bundle\FrameworkBundle\Templating\GlobalVariables;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Zend\View\Exception\RuntimeException;
 use Zend\View\Model\ViewModel;
-use Zend\View\Renderer\PhpRenderer;
 use Zend\View\Resolver\ResolverInterface;
 use Zend\View\View;
 use Symfony\Component\HttpFoundation\Response as SfResponse;
-use Symfony\Component\HttpFoundation\Request as SfRequest;
-use Zend\View\ViewEvent;
 
+/**
+ * Class ZfViewEngine
+ *
+ * Rendering engine integrating Zend\View component.
+ *
+ * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
+ * @package Bzl\Bundle\ZfViewBundle
+ */
 class ZfViewEngine implements EngineInterface
 {
     protected $resolver;
@@ -35,11 +40,10 @@ class ZfViewEngine implements EngineInterface
     protected $result;
 
     /**
-     * @param \Zend\View\View $view
-     * @param \Zend\View\Resolver\ResolverInterface $resolver
-     * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
+     * @param View $view
+     * @param ResolverInterface $resolver
+     * @param ContainerInterface $container
      * @param GlobalVariables $globals
-     * @internal param \Zend\View\Renderer\RendererInterface $renderer
      */
     public function __construct(
         View $view,
@@ -57,15 +61,6 @@ class ZfViewEngine implements EngineInterface
             $this->addGlobal('app', $globals);
         }
 
-        $this->attachListeners();
-
-    }
-
-    public function attachListeners()
-    {
-        $events = $this->view->getEventManager();
-        $container = $this->container;
-        $engine = $this;
     }
 
     public function getGlobals()
@@ -103,14 +98,12 @@ class ZfViewEngine implements EngineInterface
 
             $data = array_merge((array) $this->getGlobals(), $parameters);
             $this->view->render($name, $data);
-            return $this->getResult();
 
         } catch(RuntimeException $e) {
             throw $e;
         } catch(\Exception $e) {
             throw $e;
         }
-        // TODO: Implement render() method.
     }
 
     /**
@@ -126,7 +119,7 @@ class ZfViewEngine implements EngineInterface
     {
         try {
 
-            $result = $this->resolver->resolve($name, $this->renderer);
+            $result = $this->resolver->resolve($name);
             return (bool) $result;
 
         } catch(\Exception $e) {
@@ -135,7 +128,9 @@ class ZfViewEngine implements EngineInterface
     }
 
     /**
-     * Returns true if this class is able to render the given template.
+     *
+     * Checks if engine supports template.
+     * Supports: *.phtml files and instances of ViewModel
      *
      * @param mixed $name A template name or a TemplateReferenceInterface instance
      *
@@ -157,13 +152,10 @@ class ZfViewEngine implements EngineInterface
     }
 
     /**
-     * Renders a view and returns a Response.
-     *
-     * @param string $view The view name
-     * @param array $parameters An array of parameters to pass to the view
-     * @param SfResponse $response A Response instance
-     *
-     * @return Response A Response instance
+     * @param string $view
+     * @param array $parameters
+     * @param SfResponse $sfResponse
+     * @return SfResponse
      */
     public function renderResponse($view, array $parameters = array(), SfResponse $sfResponse = NULL)
     {
@@ -185,9 +177,7 @@ class ZfViewEngine implements EngineInterface
         $request = new Request($sfRequest);
 
         $this->view->setRequest($request);
-
-
-        $rendered = $this->render($view, $parameters);
+        $this->render($view, $parameters);
 
         return $sfResponse;
     }
