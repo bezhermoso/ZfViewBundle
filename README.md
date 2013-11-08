@@ -4,42 +4,88 @@ ZfViewBundle
 Use the Zend\View multi-step layout paradigm within your Symfony2 project.
 
 ```php
-    <?php
+<?php
 
-    namespace FooBundle\Controller;
+namespace FooBundle\Controller;
 
-    use Bzl\Bundle\ZfViewBundle\Configuration\Rendering;
+use Bzl\Bundle\ZfViewBundle\Configuration\Rendering;
+
+/**
+ *
+ * @Rendering(template="FooBundle::layout.html.phtml")
+ */
+class SomeController extends Controller
+{
+    /**
+     * @Rendering("FooBundle:Some:some.html.phtml")
+     */
+    public function someAction($name)
+    {
+        return array(
+            'name' => $name,
+        );
+    }
+}
+```
+
+In `src/FooBundle/Resources/views/Some/some.html.phtml`:
+
+```php
+Hello <?php echo $this->name; ?>!
+```
+
+In `src/FooBundle/Resources/layout.html.phtml`
+
+```php
+<html>
+    <head>...</head>
+    <body>
+        <div class="container">
+            <?php
+                
+                /* 
+                 * Child views will be assigned the the content variable by default 
+                 * and thus can be rendered like below:
+                 */
+                echo $this->content;
+                
+            ?>
+        </div>
+    </body>
+</html>
+```
+
+Templates can also be defined within the `@Rendering` annoations in methods and will take precedence:
+
+```php
+<?php
 
     /**
-     *
-     * @Rendering(template="FooBundle::layout.html.phtml")
+     * @Rendering("FooBundle:Some:other.html.phtml", template="FooBundle::secondary-layout.html.phtml")
      */
-    class SomeController extends Controller
+    public function otherAction($name)
     {
-        @Rendering("FooBundle:Some:some.html.phtml")
-        public function someAction($name)
-        {
-            return array(
-                'name' => $name,
-            );
-        }
+        return array(
+            'name' => $name,
+        );
     }
 ```
 
-In src/FooBundle/Resources/views/Some/some.html.phtml:
+You can also set `template` to `null` to disable a template if one is defined at the class level:
 
-    Hello <?php echo $this->name; ?>!
+```php
+<?php
 
-In src/FooBundle/Resources/layout.html.phtml
-
-    <html>
-        <head>...</head>
-        <body>
-            <div class="container">
-                <?php
-                    <!-- Child views will be rendered here. -->
-                    echo $this->content;
-                ?>
-            </div>
-        </body>
-    </html>
+/**
+ * @Rendering(template="::base.html.phtml")
+ */
+class FooController
+{
+    /**
+     * @Rendering("FooBundle:Foo:bar.html.phtml", template=null)
+     */
+    public function barAction()
+    {
+        return array();
+    }
+}
