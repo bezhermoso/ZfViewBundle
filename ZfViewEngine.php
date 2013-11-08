@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ *
  * User: Bezalel
  * Date: 11/7/13
  * Time: 6:18 AM
@@ -185,6 +185,7 @@ class ZfViewEngine implements EngineInterface
         $request = new Request($sfRequest);
 
         $this->view->setRequest($request);
+
 
         $rendered = $this->render($view, $parameters);
 
