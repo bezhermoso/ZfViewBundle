@@ -45,7 +45,7 @@ In `src/FooBundle/Resources/layout.html.phtml`
                 
                 /* 
                  * Child views will be assigned the the content variable by default 
-                 * and thus can be rendered like below:
+                 * and thus can be rendered like so:
                  */
                 echo $this->content;
                 
@@ -55,7 +55,7 @@ In `src/FooBundle/Resources/layout.html.phtml`
 </html>
 ```
 
-Templates can also be defined within the `@Rendering` annoations in methods and will take precedence:
+Templates can also be defined within the `@Rendering` annotation in a method and will take precedence:
 
 ```php
 <?php
