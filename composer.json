@@ -1,0 +1,30 @@
+{
+    "name": "bez/zfview-bundle",
+    "type": "library",
+    "description": "Multi-step layouts for Symfony2 via Zend\\View component",
+    "keywords": ["templating", "symfony", "zend-view"],
+    "homepage": "https://github.com/bezhermoso/ZfViewBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bezalel Hermoso",
+            "email": "bezalelhermoso@gmail.com",
+            "homepage": "http://bez.im",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/framework-bundle": ">=2.3",
+        "zendframework/zend-view": "2.2.*",
+        "zendframework/zend-servicemanager": "2.2.*",
+        "zendframework/zend-filter": "2.2.*"
+    },
+    "miniumum-stability" : "dev",
+    "autoload": {
+        "psr-0": {
+            "Bzl\\Bundle\\ZfViewBundle": ""
+        }
+    },
+    "target-dir": "Bzl/Bundle/ZfViewBundle"
+}
