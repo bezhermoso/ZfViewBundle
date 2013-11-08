@@ -1,0 +1,8 @@
+parameters:
+  bzl.zfview.assetic.formula_loader.class: Bzl\Bundle\ZfViewBundle\Assetic\ZfViewFormulaLoader
+
+services:
+  bzl.zfview.assetic.formula_loader:
+    class: %bzl.zfview.assetic.formula_loader.class%
+    tags:
+      - { name: assetic.formula_loader, alias: zf_view }

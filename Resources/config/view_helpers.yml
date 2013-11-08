@@ -1,0 +1,9 @@
+parameters:
+
+services:
+  bzl.view_helper.url:
+    class: Bzl\Bundle\ZfViewBundle\Zend\View\Helper\Path
+    arguments: ["@router"]
+    tags:
+      - { name: zend.view_helper, alias: path }
+      - { name: zend.view_helper, alias: url }
