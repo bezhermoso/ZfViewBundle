@@ -12,9 +12,9 @@ use Bzl\Bundle\ZfViewBundle\Configuration\Rendering;
 use Bzl\Bundle\ZfViewBundle\ZfViewEngine;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Util\ClassUtils;
+use Sensio\Bundle\FrameworkExtraBundle\Templating\TemplateGuesser;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Zend\EventManager\EventManager;
@@ -33,14 +33,24 @@ use Zend\View\Model\ViewModel;
 class KernelListener implements EventSubscriberInterface
 {
     protected $eventManager;
+
     protected $reader;
+
     protected $engine;
 
-    public function __construct(EventManager $events, Reader $reader, ZfViewEngine $engine)
-    {
+    protected $guesser;
+
+
+    public function __construct(
+        EventManager $events,
+        Reader $reader,
+        ZfViewEngine $engine,
+        TemplateGuesser $guesser
+    ) {
         $this->eventManager = $events;
         $this->reader = $reader;
         $this->engine = $engine;
+        $this->guesser = $guesser;
     }
 
     /**
@@ -120,6 +130,8 @@ class KernelListener implements EventSubscriberInterface
             return;
         }
 
+        $request = $event->getRequest();
+
         $className = class_exists('Doctrine\Common\Util\ClassUtils') ? ClassUtils::getClass($controller[0]) : get_class($controller[0]);
         $object    = new \ReflectionClass($className);
         $method    = $object->getMethod($controller[1]);
@@ -127,11 +139,19 @@ class KernelListener implements EventSubscriberInterface
         $classRenderingConfig = $this->getRenderingConfiguration($this->reader->getClassAnnotations($object));
         $methodRenderingConfig = $this->getRenderingConfiguration($this->reader->getMethodAnnotations($method));
 
-        if ($methodRenderingConfig && $classRenderingConfig) {
-            $methodRenderingConfig->merge($classRenderingConfig);
+
+        if ($methodRenderingConfig) {
+
+            if ($classRenderingConfig) {
+                $methodRenderingConfig->merge($classRenderingConfig);
+            }
+
+            if (!$methodRenderingConfig->getViewName()) {
+                $name = $this->guesser->guessTemplateName($controller, $request, 'phtml');
+                $methodRenderingConfig->setViewName($name->getLogicalName());
+            }
         }
 
-        $request = $event->getRequest();
         $request->attributes->set('__rendering', $methodRenderingConfig);
     }
 
@@ -146,6 +166,6 @@ class KernelListener implements EventSubscriberInterface
                 return $configuration;
             }
         }
-        return;
+        return null;
     }
 }
