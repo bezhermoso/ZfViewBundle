@@ -7,7 +7,7 @@ Use the Zend\View multi-step layout paradigm within your Symfony2 project.
 
 You can install this bundle via Composer:
 
-`php composer.php require bez/zfview-bundle:dev-master`
+`php composer.phar require bez/zfview-bundle:dev-master`
 
 #Usage
 
