@@ -47,6 +47,16 @@ class SomeController extends Controller
             'name' => $name,
         );
     }
+    
+    /**
+     * @Rendering()
+     * 
+     * The template name will guessed if none is specified. In this example, FooBundle:Some:baz.html.phtml will be used.
+     */
+    public function bazAction()
+    {
+        return array();
+    }
 }
 ```
 
