@@ -12,3 +12,9 @@ services:
     arguments: ["@router"]
     tags:
       - { name: zend.view_helper, alias: url }
+
+  bzl.view_helper.security:
+    class: Bzl\Bundle\ZfViewBundle\Zend\View\Helper\Security
+    arguments: ["@security.context"]
+    tags:
+      - { name: zend.view_helper, alias: security }
