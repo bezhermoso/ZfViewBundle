@@ -8,7 +8,7 @@ Just like Twig functions, view helpers provide you various functionalities avail
 
 ##Built-in view helpers
 
-Routing-related helpers:
+###Routing-related helpers:
 
 ```php
 <?php
@@ -24,7 +24,7 @@ Routing-related helpers:
 The above helpers work exactly like their Twig counterparts, `{{ path(...) }}` and `{{ url(...) }}`.
 
 
-###Make your own view helper
+##Make your own view helper
 
 Simply extend `Zend\View\Helper\AbstractHelper` or implement `Zend\View\Helper\HelperInterface`, define it as a service tagged with `zend.view_helper`.
 
