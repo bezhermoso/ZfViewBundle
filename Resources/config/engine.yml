@@ -39,7 +39,7 @@ services:
     class: Bzl\Bundle\ZfViewBundle\Zend\View\AggregatePluginManager
 
   bzl.zf_view.helper_manager.original:
-    class: Zend\View\HelperPluginManager
+    class: Bzl\Bundle\ZfViewBundle\Zend\View\HelperPluginManager
     tags:
       - { name: zf_view.plugin_manager, priority: 1 }
 
