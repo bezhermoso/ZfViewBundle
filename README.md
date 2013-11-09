@@ -141,7 +141,7 @@ services:
 Note the `alias` attribute. This is required. In the above example, you can invoke your view helper via this call:
 
 ```php
-    echo $this->mailTo("bezalelhermoso@gmail.com", array('subject' => 'Hello!');
+    echo $this->mailTo("bezalelhermoso@gmail.com", array('subject' => 'Hello!'));
 ```
 
 The parameters will be passed to the `__invoke` method of the view helper instance.
