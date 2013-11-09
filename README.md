@@ -3,6 +3,16 @@ ZfViewBundle
 
 Use the Zend\View multi-step layout paradigm within your Symfony2 project.
 
+##Installation
+
+You can install this bundle via Composer:
+
+`php composer.php require bez/zfview-bundle:dev-master`
+
+#Usage
+
+Define templates using the `@Bzl\Bundle\ZfViewBundle\Configuration\Rendering` annotation.
+
 ```php
 <?php
 
