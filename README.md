@@ -9,11 +9,28 @@ You can install this bundle via Composer:
 
 `php composer.phar require bez/zfview-bundle:dev-master`
 
-#Usage
+Register the bundle in `app/AppKernel.php`:
 
-###Activation
+```php
+<?php
+class AppKernel extends Kernel
+{
 
-First of all add `"zf_view"` to the templating engines in your `config.yml`:
+    public function registerBundles()
+    {
+        $bundles = array(
+            /* ... */
+            new Bzl\Bundle\ZfViewBundle\ZfViewBundle(),
+        );
+        
+        /* ... */
+
+        return $bundles;
+    }
+    
+```
+
+Add `"zf_view"` to the templating engines in your `config.yml`:
 
 ```yml
 framework:
