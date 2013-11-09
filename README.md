@@ -111,7 +111,7 @@ Templates can also be defined within the `@Rendering` annotation in a method and
 <?php
 
     /**
-     * @Rendering("FooBundle:Some:other.html.phtml", template="FooBundle::secondary-layout.html.phtml")
+     * @Rendering("FooBundle:Some:other.html.phtml", template="FooBundle::secondary.html.phtml")
      */
     public function otherAction($name)
     {
