@@ -56,6 +56,21 @@ The above helpers work exactly like their Twig counterparts, `{{ path(...) }}` a
     
 ```
 
+##Controller renderer helper
+
+```php
+<?php
+
+    echo $this->controller(
+                    "FooBundle:bar:baz",  //Required
+                    $controllerParams = array("id" => $id) //Optional
+                )
+                ->render(
+                    $options = array(), //Optional
+                );
+    
+```
+
 ##Writing your own view helper...
 
 Simply extend `Zend\View\Helper\AbstractHelper` or implement `Zend\View\Helper\HelperInterface`, define it as a service tagged with `zend.view_helper`.
