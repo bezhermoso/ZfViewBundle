@@ -62,13 +62,16 @@ The above helpers work exactly like their Twig counterparts, `{{ path(...) }}` a
 <?php
 
     echo $this->controller(
-                    "FooBundle:bar:baz",  //Required
-                    $controllerParams = array("id" => $id) //Optional
-                )
-                ->render(
-                    $options = array(), //Optional
-                );
+                    "FooBundle:bar:baz",
+                    $controllerParams = array("id" => $id)
+                )->render();
     
+```
+
+Above usage's Twig equivalent is:
+
+```twig
+    {{ render(controller('FooBundle:bar:baz', {id: id})) }}
 ```
 
 ##Writing your own view helper...
