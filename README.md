@@ -13,7 +13,7 @@ You can install this bundle via Composer:
 
 ###Activation
 
-First of all Add `"zf_view"` to the templating engines in your `config.yml`:
+First of all add `"zf_view"` to the templating engines in your `config.yml`:
 
 ```yml
 framework:
