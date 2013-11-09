@@ -68,18 +68,18 @@ The above helpers work exactly like their Twig counterparts, `{{ path(...) }}` a
     
 ```
 
+Above usage's Twig equivalent is:
+
+```twig
+    {{ render(controller('FooBundle:bar:baz', {id: id})) }}
+```
+
 ###Other view helpers
 
  - [Doctype](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.doctype.html#zend-view-helpers-initial-doctype)
  - [HeadLink](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.head-link.html#zend-view-helpers-initial-headlink)
  - [HeadScript](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.head-script.html#zend-view-helpers-initial-headscript)
  - [InlineScript](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.inline-script.html#zend-view-helpers-initial-inlinescript)
-
-Above usage's Twig equivalent is:
-
-```twig
-    {{ render(controller('FooBundle:bar:baz', {id: id})) }}
-```
 
 ##Writing your own view helper...
 
