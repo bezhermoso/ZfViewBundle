@@ -37,6 +37,24 @@ The above helpers work exactly like their Twig counterparts, `{{ path(...) }}` a
     }
 ```
 
+###Translation helpers
+```php
+    
+    //Straight-forward string translation. Only first argument -- the string key -- is required.
+    
+    echo $this->trans('message.to.translate', $arguments = array(), $domain = 'FooBundle', $locale = 'fr_FR');
+    
+    //Translation choice. Only first and second argument -- the string key and count -- are required.
+    echo $this->trans()
+              ->choice(
+                    '{0} There is no apples|{1} There is one apple|{1,Inf} There are %count% apples',
+                    $count = 10,
+                    $arguments = array(),
+                    $domain = 'messages',
+                    $locale = 'en_US',
+              );
+    
+```
 
 ##Make your own view helper
 
