@@ -23,7 +23,7 @@ Just like Twig functions, view helpers provide you various functionalities avail
 
 The above helpers work exactly like their Twig counterparts, `{{ path(...) }}` and `{{ url(...) }}`.
 
-###SecurityContext helpers
+###Authentication/authorization helpers
 
 ```php
 <?php
