@@ -10,6 +10,7 @@ namespace Bzl\Bundle\ZfViewBundle\Zend\View\Helper;
 
 
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Zend\View\Helper\AbstractHelper;
 
 /**
@@ -22,15 +23,18 @@ use Zend\View\Helper\AbstractHelper;
  */
 class Path extends AbstractHelper
 {
-    protected $router;
+    protected $generator;
 
-    public function __construct(Router $router)
+    public function __construct(UrlGeneratorInterface $generator)
     {
-        $this->router = $router;
+        $this->generator = $generator;
     }
 
-    public function __invoke($routeName, $params, $useAbsolute = false)
+    public function __invoke($routeName, array $params = null, $relative = false)
     {
-        return $this->router->generate($routeName, $params, $useAbsolute);
+        return $this->generator->generate(
+                                    $routeName,
+                                    $params,
+                                    $relative ? UrlGeneratorInterface::RELATIVE_PATH : UrlGeneratorInterface::ABSOLUTE_PATH);
     }
 } 
