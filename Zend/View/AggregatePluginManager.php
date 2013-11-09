@@ -11,6 +11,14 @@ namespace Bzl\Bundle\ZfViewBundle\Zend\View;
 use Zend\Stdlib\SplPriorityQueue;
 use Zend\View\HelperPluginManager;
 
+/**
+ * Class AggregatePluginManager
+ *
+ * Aggregates view helper managers.
+ *
+ * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
+ * @package Bzl\Bundle\ZfViewBundle\Zend\View
+ */
 class AggregatePluginManager extends HelperPluginManager implements PluginManagerInterface
 {
     /**
