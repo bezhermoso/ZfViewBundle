@@ -25,7 +25,7 @@ class Url extends AbstractHelper
     {
         return $this->generator->generate(
                             $routeName,
-                            $params,
+                            $params ?: array(),
                             $relative ? UrlGeneratorInterface::NETWORK_PATH : UrlGeneratorInterface::ABSOLUTE_URL);
     }
 } 

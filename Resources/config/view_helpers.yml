@@ -24,3 +24,9 @@ services:
     arguments: ["@translator"]
     tags:
       - { name: zend.view_helper, alias: trans }
+
+  bzl.view_helper.controller_renderer:
+    class: Bzl\Bundle\ZfViewBundle\Zend\View\Helper\ControllerRenderer
+    arguments: ["@fragment.handler"]
+    tags:
+      - { name: zend.view_helper, alias: controller }

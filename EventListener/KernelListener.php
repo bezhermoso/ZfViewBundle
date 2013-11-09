@@ -94,7 +94,8 @@ class KernelListener implements EventSubscriberInterface
             $viewModel->setTemplate($rendering->getViewName());
             $viewModel->setOption('formatAs', $rendering->getFormat());
 
-            if ($rendering->getTemplate() != null) {
+            if ($rendering->getTemplate() != null
+            && strtolower($rendering->getTemplate()) != "none") {
                 $template = new ViewModel();
                 $template->setTemplate($rendering->getTemplate());
                 $template->addChild($viewModel);
@@ -126,7 +127,7 @@ class KernelListener implements EventSubscriberInterface
         $classRenderingConfig = $this->getRenderingConfiguration($this->reader->getClassAnnotations($object));
         $methodRenderingConfig = $this->getRenderingConfiguration($this->reader->getMethodAnnotations($method));
 
-        if ($methodRenderingConfig) {
+        if ($methodRenderingConfig && $classRenderingConfig) {
             $methodRenderingConfig->merge($classRenderingConfig);
         }
 
