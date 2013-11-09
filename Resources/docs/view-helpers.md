@@ -1,6 +1,6 @@
 #View Helpers
 
-Just like Twig functions, view helpers provide you various functionalities available within your templates. For example, the `path` view helper is a direct equivalent to the `path` Twig function which is used to generate URLS:
+Just like Twig functions, view helpers provide you various functionalities available within your templates. For example, the `path` view helper is a direct equivalent to the `path` Twig function which is used to generate paths:
 
 ```php
     <a href="<?php echo $this->path('contact_us', array('lang' => 'en')) ?>">Contact Us</a>
@@ -8,7 +8,7 @@ Just like Twig functions, view helpers provide you various functionalities avail
 
 ##Built-in view helpers
 
-###Routing helpers:
+###Routing helpers
 
 ```php
 <?php
@@ -23,7 +23,7 @@ Just like Twig functions, view helpers provide you various functionalities avail
 
 The above helpers work exactly like their Twig counterparts, `{{ path(...) }}` and `{{ url(...) }}`.
 
-###Security Context helpers
+###SecurityContext helpers
 
 ```php
 <?php
