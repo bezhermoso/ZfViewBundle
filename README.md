@@ -93,7 +93,7 @@ Templates can also be defined within the `@Rendering` annotation in a method and
     }
 ```
 
-You can also set `template` to `null` to disable a template if one is defined at the class level:
+You can also set `template` to `"none"` to disable a template if one is defined at the class level:
 
 ```php
 <?php
@@ -104,7 +104,7 @@ You can also set `template` to `null` to disable a template if one is defined at
 class FooController
 {
     /**
-     * @Rendering("FooBundle:Foo:bar.html.phtml", template=null)
+     * @Rendering("FooBundle:Foo:bar.html.phtml", template="none")
      */
     public function barAction()
     {
