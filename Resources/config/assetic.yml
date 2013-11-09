@@ -4,5 +4,7 @@ parameters:
 services:
   bzl.zf_view.assetic.formula_loader:
     class: %bzl.zf_view.assetic.formula_loader.class%
+    arguments: ["@assetic.asset_factory"]
     tags:
       - { name: assetic.formula_loader, alias: zf_view }
+      - { name: assetic.formula_loader, alias: phtml }

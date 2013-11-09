@@ -18,6 +18,9 @@ services:
   templating.engine.zf_view:
     alias: bzl.zf_view.engine
 
+  templating.engine.phtml:
+    alias: bzl.zf_view.engine
+
   bzl.zf_view:
     class: %bzl.zf_view.class%
     calls:

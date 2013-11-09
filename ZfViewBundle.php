@@ -7,6 +7,7 @@
  */
 namespace Bzl\Bundle\ZfViewBundle;
 
+use Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass\AsseticPass;
 use Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass\EventManagerListenersPass;
 use Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass\ViewHelpersPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
