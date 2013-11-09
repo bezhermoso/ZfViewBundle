@@ -1,7 +1,7 @@
 ZfViewBundle
 ============
 
-Use the Zend\View multi-step layout paradigm within your Symfony2 project.
+Use the Zend\View multi-step layout paradigm and view helpers within your Symfony2 project.
 
 ##Installation
 
@@ -21,7 +21,7 @@ framework:
         engines: [ 'twig', 'zf_view' ]
 ```
 
-###Templates
+###Multi-step Layouts
 
 Define templates using the `@Bzl\Bundle\ZfViewBundle\Configuration\Rendering` annotation.
 
