@@ -56,7 +56,7 @@ The above helpers work exactly like their Twig counterparts, `{{ path(...) }}` a
     
 ```
 
-##Controller renderer helper
+###Controller renderer helper
 
 ```php
 <?php
