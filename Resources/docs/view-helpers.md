@@ -8,7 +8,7 @@ Just like Twig functions, view helpers provide you various functionalities avail
 
 ##Built-in view helpers
 
-###Routing-related helpers:
+###Routing helpers:
 
 ```php
 <?php
@@ -22,6 +22,20 @@ Just like Twig functions, view helpers provide you various functionalities avail
 ```
 
 The above helpers work exactly like their Twig counterparts, `{{ path(...) }}` and `{{ url(...) }}`.
+
+###Security Context helpers
+
+```php
+<?php
+    
+    //Retrieve authenticated user. Returns null if authentication is absent in security context.
+    $currentUser = $this->security()->user();
+    
+    // Query authorization layer.
+    if ($this->security()->isGranted('ROLE_ADMIN', $object, $field = 1)) {
+        /* AUTHORIZED */
+    }
+```
 
 
 ##Make your own view helper
