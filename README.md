@@ -51,7 +51,8 @@ class SomeController extends Controller
     /**
      * @Rendering()
      * 
-     * The template name will guessed if none is specified. In this example, FooBundle:Some:baz.html.phtml will be used.
+     * The template name will guessed if none is specified. 
+     * In this example, FooBundle:Some:baz.html.phtml will be used.
      */
     public function bazAction()
     {
@@ -124,6 +125,6 @@ class FooController
 
 ```
 
-##View Helpers Documentation
+##View Helpers
 
 Learn more about view helpers here: [View helpers documentation](Resources/docs/view-helpers.md)
