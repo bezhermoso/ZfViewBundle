@@ -33,7 +33,7 @@ The above helpers work exactly like their Twig counterparts, `{{ path(...) }}` a
     
     // Query authorization layer.
     if ($this->security()->isGranted('ROLE_ADMIN', $object, $field = 1)) {
-        /* AUTHORIZED */
+        /* AUTHORIZED! */
     }
 ```
 
@@ -47,7 +47,7 @@ The above helpers work exactly like their Twig counterparts, `{{ path(...) }}` a
     //Translation with pluralization. Only first and second argument -- the string key and count -- are required.
     echo $this->trans()
               ->choice(
-                    '{0} There is no apples|{1} There is one apple|{1,Inf} There are %count% apples',
+                    '{0} There is no apples|{1} There is one apple|]1,Inf[ There are %count% apples',
                     $count = 10,
                     $arguments = array(),
                     $domain = 'messages',
@@ -56,7 +56,7 @@ The above helpers work exactly like their Twig counterparts, `{{ path(...) }}` a
     
 ```
 
-##Make your own view helper
+##Writing your own view helper...
 
 Simply extend `Zend\View\Helper\AbstractHelper` or implement `Zend\View\Helper\HelperInterface`, define it as a service tagged with `zend.view_helper`.
 
