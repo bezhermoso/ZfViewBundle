@@ -80,6 +80,12 @@ Above usage's Twig equivalent is:
  - [HeadLink](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.head-link.html#zend-view-helpers-initial-headlink)
  - [HeadScript](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.head-script.html#zend-view-helpers-initial-headscript)
  - [InlineScript](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.inline-script.html#zend-view-helpers-initial-inlinescript)
+ - [HeadTitle](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.head-title.html#zend-view-helpers-initial-headtitle)
+ - [HeadMeta](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.head-meta.html#zend-view-helpers-initial-headmeta)
+ - [Partial](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.html#partial-helper)
+ - [PartialLoop](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.html#partial-helper)
+ - [Placeholder](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.placeholder.html)
+ - [Cycle](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.html#cycle-helper)
 
 ##Writing your own view helper...
 

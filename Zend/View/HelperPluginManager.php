@@ -22,7 +22,7 @@ class HelperPluginManager extends ZfPluginManager
             'doctype'             => 'Zend\View\Helper\Doctype', // overridden by a factory in ViewHelperManagerFactory
             //'basepath'            => 'Zend\View\Helper\BasePath',
             //'url'                 => 'Zend\View\Helper\Url',
-            //'cycle'               => 'Zend\View\Helper\Cycle',
+            'cycle'               => 'Zend\View\Helper\Cycle',
             'declarevars'         => 'Zend\View\Helper\DeclareVars',
             'escapehtml'          => 'Zend\View\Helper\EscapeHtml',
             'escapehtmlattr'      => 'Zend\View\Helper\EscapeHtmlAttr',
