@@ -31,21 +31,37 @@ class ViewHelpersPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('bzl.zfview.helper_manager')) {
+        if (!$container->hasDefinition('bzl.zf_view.helper_manager')) {
             return;
         }
 
-        $helperManager = $container->getDefinition('bzl.zfview.helper_manager');
+        $aggregateManager = $container->getDefinition('bzl.zf_view.helper_manager');
 
+        $pluginManagers = $container->findTaggedServiceIds('zf_view.plugin_manager');
+
+        foreach ($pluginManagers as $id => $tags) {
+
+            foreach ($tags as $attributes) {
+                $attributes = $this->resolvePluginManagerAttributes($attributes);
+                $aggregateManager->addMethodCall(
+                                    'addPluginManager',
+                                    array(new Reference($id), $attributes['priority']));
+            }
+
+        }
+
+        $helperManager = $container->getDefinition('bzl.zf_view.helper_manager.original');
         $viewHelpers = $container->findTaggedServiceIds('zend.view_helper');
 
         foreach ($viewHelpers as $id => $tags) {
             foreach ($tags as $attributes) {
-                $attributes = $this->resolveAttributes($attributes);
+
+                $attributes = $this->resolveViewHelperAttributes($attributes);
 
                 if(null == $attributes['alias']) {
                     throw new \RuntimeException(sprintf('An alias attribute must be specified in all view helpers. None given for service "%s".', $id));
                 }
+
                 $alias = $attributes['alias'];
 
                 switch ($attributes['type']) {
@@ -57,11 +73,18 @@ class ViewHelpersPass implements CompilerPassInterface
         }
     }
 
-    public function resolveAttributes(array $attributes)
+    public function resolveViewHelperAttributes(array $attributes)
     {
         return array_merge(array(
             'type' => 'service',
             'alias' => null,
+        ), $attributes);
+    }
+
+    public function resolvePluginManagerAttributes(array $attributes)
+    {
+        return array_merge(array(
+            'priority' => 1,
         ), $attributes);
     }
 }
