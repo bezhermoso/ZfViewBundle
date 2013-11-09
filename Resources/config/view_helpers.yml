@@ -18,3 +18,9 @@ services:
     arguments: ["@security.context"]
     tags:
       - { name: zend.view_helper, alias: security }
+
+  bzl.view_helper.translation:
+    class: Bzl\Bundle\ZfViewBundle\Zend\View\Helper\Translation
+    arguments: ["@translator"]
+    tags:
+      - { name: zend.view_helper, alias: trans }
