@@ -1,7 +1,7 @@
 {
     "name": "bez/zfview-bundle",
     "type": "library",
-    "description": "Multi-step layouts for Symfony2 via Zend\\View component",
+    "description": "Multi-step layouts and view helpers for Symfony2 via Zend\\View component",
     "keywords": ["templating", "symfony", "zend-view"],
     "homepage": "https://github.com/bezhermoso/ZfViewBundle",
     "license": "MIT",
