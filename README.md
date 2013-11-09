@@ -114,34 +114,6 @@ class FooController
 
 ```
 
-##View Helpers
+##View Helpers Documentation
 
-Just like Twig functions, view helpers provide you various functionalities available within your templates. For example, the `path` view helper is a direct equivalent to the `path` Twig function which is used to generate URLS:
-
-```php
-    <a href="<?php echo $this->path('contact_us', array('lang' => 'en')) ?>">Contact Us</a>
-```
-
-###Make your own view helper
-
-Simply extend `Zend\View\Helper\AbstractHelper` or implement `Zend\View\Helper\HelperInterface`, define it as a service tagged with `zend.view_helper`.
-
-Example:
-
-```yaml
-
-services:
-    foobundle.utils.mailto_formatter:
-        class: FooBundle\Model\MailToFormatter
-        tags:
-            - { name: zend.view_helper, alias: mailTo }
-
-```
-
-Note the `alias` attribute. This is required. In the above example, you can invoke your view helper via this call:
-
-```php
-    echo $this->mailTo("bezalelhermoso@gmail.com", array('subject' => 'Hello!'));
-```
-
-The parameters will be passed to the `__invoke` method of the view helper instance.
+Learn more about view helpers here: [View helpers documentation](Resources/docs/view-helpers.md)
