@@ -44,7 +44,7 @@ The above helpers work exactly like their Twig counterparts, `{{ path(...) }}` a
     
     echo $this->trans('message.to.translate', $arguments = array(), $domain = 'FooBundle', $locale = 'fr_FR');
     
-    //Translation choice. Only first and second argument -- the string key and count -- are required.
+    //Translation with pluralization. Only first and second argument -- the string key and count -- are required.
     echo $this->trans()
               ->choice(
                     '{0} There is no apples|{1} There is one apple|{1,Inf} There are %count% apples',
