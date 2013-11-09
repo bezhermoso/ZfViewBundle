@@ -74,6 +74,21 @@ Above usage's Twig equivalent is:
     {{ render(controller('FooBundle:bar:baz', {id: id})) }}
 ```
 
+###Escaping helpers
+
+```php
+<?php
+
+    $this->escapeHtml("<script>alert(\"For the lulz!\");</script>");
+    
+    $escapedJs = $this->escapeJs($possiblyUnescapedJs);
+    
+    $escapedCss = $this->escapeCss($possiblyUnescapedCss);
+    
+    $escapedUrl = $this->escapeUrl($possiblyUnescapedUrl);
+    
+```
+
 ###Other view helpers
 
  - [Doctype](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.doctype.html#zend-view-helpers-initial-doctype)
