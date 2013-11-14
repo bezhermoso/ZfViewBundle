@@ -84,6 +84,9 @@ In `src/FooBundle/Resources/views/Some/some.phtml`:
 Hello <?php echo $this->name; ?>!
 ```
 
+Child views -- in this case, `src/FooBundle/Resources/views/Some/some.phtml` -- are evaluated before the parent layouts. 
+The output is captured to the `$this->content` variable and thus can be injected into the layout as follows:
+
 In `src/FooBundle/Resources/layout.phtml`
 
 ```php
@@ -93,10 +96,6 @@ In `src/FooBundle/Resources/layout.phtml`
         <div class="container">
             <?php
                 
-                /* 
-                 * Child views will be assigned to the $content variable by default
-                 * and can be accessed like so:
-                 */
                 echo $this->content;
                 
             ?>
@@ -104,6 +103,10 @@ In `src/FooBundle/Resources/layout.phtml`
     </body>
 </html>
 ```
+
+The fact that child views are evaluated first is very significant. This allows child views to modify elements (i.e., stylesheets, scripts, menus, etc.) in the parent layout by means of [view helpers](Resources/docs/view-helpers.md).
+
+###Overriding rendering options
 
 Layouts can also be defined within the `@Rendering` annotation in a method and will take precedence:
 
