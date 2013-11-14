@@ -181,14 +181,4 @@ class ZfViewEngine implements EngineInterface
 
         return $sfResponse;
     }
-
-    public function setResult($result)
-    {
-        $this->result = $result;
-    }
-
-    public function getResult()
-    {
-        return $this->result;
-    }
 }
