@@ -26,6 +26,17 @@ class ZfViewExtension extends Extension
         $loader->load('engine.yml');
         $loader->load('assetic.yml');
         $loader->load('view_helpers.yml');
+
+
+        if ($container->getParameter('kernel.debug')) {
+
+            $loader->load('debug.yml');
+            $container->setDefinition('bzl.zf_view.engine', $container->findDefinition('debug.bzl.zf_view.engine'));
+            $container->setAlias('debug.bzl.zf_view.engine', 'bzl.zf_view.engine');
+
+        }
+
+
     }
 
     public function getAlias()

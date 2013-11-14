@@ -1,0 +1,8 @@
+parameters:
+  bzl.zf_view.engine.class.timed: Bzl\Bundle\ZfViewBundle\Templating\TimedZfViewEngine
+
+services:
+  debug.bzl.zf_view.engine:
+    class: %bzl.zf_view.engine.class.timed%
+    arguments:
+      ["@bzl.zf_view", "@bzl.zf_view.resolver.aggregate", "@service_container", "@debug.stopwatch"]
