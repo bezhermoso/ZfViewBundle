@@ -20,7 +20,7 @@ class AppKernel extends Kernel
     {
         $bundles = array(
             /* ... */
-            new Bzl\Bundle\ZfViewBundle\ZfViewBundle(),
+            new Bez\ZfViewBundle\ZfViewBundle(),
         );
         
         /* ... */
@@ -40,14 +40,14 @@ framework:
 
 ###Multi-step Layouts
 
-Define templates using the `@Bzl\Bundle\ZfViewBundle\Configuration\Rendering` annotation.
+Define templates using the `@Bez\ZfViewBundle\Configuration\Rendering` annotation.
 
 ```php
 <?php
 
 namespace FooBundle\Controller;
 
-use Bzl\Bundle\ZfViewBundle\Configuration\Rendering;
+use Bez\ZfViewBundle\Configuration\Rendering;
 
 /**
  *

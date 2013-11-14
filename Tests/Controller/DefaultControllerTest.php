@@ -1,6 +1,6 @@
 <?php
 
-namespace Bzl\Bundle\ZfViewBundle\Tests\Controller;
+namespace Bez\ZfViewBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

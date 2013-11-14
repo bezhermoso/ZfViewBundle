@@ -5,12 +5,12 @@
  * This project is free software released under the MIT license:
  * http://www.opensource.org/licenses/mit-license.php
  */
-namespace Bzl\Bundle\ZfViewBundle;
+namespace Bez\ZfViewBundle;
 
-use Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass\AsseticPass;
-use Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass\EventManagerListenersPass;
-use Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass\TemplatingPass;
-use Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass\ViewHelpersPass;
+use Bez\ZfViewBundle\DependencyInjection\CompilerPass\AsseticPass;
+use Bez\ZfViewBundle\DependencyInjection\CompilerPass\EventManagerListenersPass;
+use Bez\ZfViewBundle\DependencyInjection\CompilerPass\TemplatingPass;
+use Bez\ZfViewBundle\DependencyInjection\CompilerPass\ViewHelpersPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -18,7 +18,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  * Class ZfViewBundle
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bzl\Bundle\ZfViewBundle
+ * @package Bez\ZfViewBundle
  */
 class ZfViewBundle extends Bundle
 {

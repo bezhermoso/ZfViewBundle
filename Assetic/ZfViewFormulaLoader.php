@@ -6,7 +6,7 @@
  * http://www.opensource.org/licenses/mit-license.php
  */
 
-namespace Bzl\Bundle\ZfViewBundle\Assetic;
+namespace Bez\ZfViewBundle\Assetic;
 
 
 use Assetic\Factory\AssetFactory;
@@ -23,7 +23,7 @@ use Assetic\Factory\Resource\ResourceInterface;
  * @todo Implement formula loader for ZfViewBundle
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bzl\Bundle\ZfViewBundle\Assetic
+ * @package Bez\ZfViewBundle\Assetic
  */
 class ZfViewFormulaLoader extends BasePhpFormulaLoader implements FormulaLoaderInterface
 {

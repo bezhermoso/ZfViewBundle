@@ -6,7 +6,7 @@
  * http://www.opensource.org/licenses/mit-license.php
  */
 
-namespace Bzl\Bundle\ZfViewBundle\Zend\View;
+namespace Bez\ZfViewBundle\Zend\View;
 
 
 use Zend\View\Model\ViewModel;
@@ -17,7 +17,7 @@ use Zend\View\Model\ViewModel;
  * @todo Implement
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bzl\Bundle\ZfViewBundle\Zend\View
+ * @package Bez\ZfViewBundle\Zend\View
  */
 class ModelManager
 {

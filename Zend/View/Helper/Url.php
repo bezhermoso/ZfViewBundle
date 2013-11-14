@@ -6,7 +6,7 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace Bzl\Bundle\ZfViewBundle\Zend\View\Helper;
+namespace Bez\ZfViewBundle\Zend\View\Helper;
 
 
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -18,7 +18,7 @@ use Zend\View\Helper\AbstractHelper;
  * URL generation helper within views.
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bzl\Bundle\ZfViewBundle\Zend\View\Helper
+ * @package Bez\ZfViewBundle\Zend\View\Helper
  */
 class Url extends AbstractHelper
 {

@@ -6,7 +6,7 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace Bzl\Bundle\ZfViewBundle\Zend\View;
+namespace Bez\ZfViewBundle\Zend\View;
 
 /**
  * Interface PluginManagerInterface
@@ -14,7 +14,7 @@ namespace Bzl\Bundle\ZfViewBundle\Zend\View;
  * Defines contract for view helper managers.
  * Mainly used for Bzl/Bundle/ZfViewBundle/Zend/View/AggregatePluginManager
  *
- * @package Bzl\Bundle\ZfViewBundle\Zend\View
+ * @package Bez\ZfViewBundle\Zend\View
  */
 interface PluginManagerInterface
 {

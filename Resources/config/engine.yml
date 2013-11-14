@@ -1,72 +1,72 @@
 parameters:
-  bzl.zf_view.engine.class: Bzl\Bundle\ZfViewBundle\Templating\ZfViewEngine
-  bzl.zf_view.class: Zend\View\View
-  bzl.zf_view.resolver.aggregate.class: Zend\View\Resolver\AggregateResolver
+  bez.zf_view.engine.class: Bez\ZfViewBundle\Templating\ZfViewEngine
+  bez.zf_view.class: Zend\View\View
+  bez.zf_view.resolver.aggregate.class: Zend\View\Resolver\AggregateResolver
   zend.event_manager.class: Zend\EventManager\EventManager
 
-  bzl.zf_view.resolver.logical_names.class: Bzl\Bundle\ZfViewBundle\Zend\View\Resolver\LogicalNameResolver
+  bez.zf_view.resolver.logical_names.class: Bez\ZfViewBundle\Zend\View\Resolver\LogicalNameResolver
 
 services:
 
-  bzl.zf_view.engine:
-    class: %bzl.zf_view.engine.class%
+  bez.zf_view.engine:
+    class: %bez.zf_view.engine.class%
     arguments:
-      ["@bzl.zf_view", "@bzl.zf_view.resolver.aggregate", "@service_container"]
+      ["@bez.zf_view", "@bez.zf_view.resolver.aggregate", "@service_container"]
     tags:
       - { name: templating.engine }
 
   templating.engine.zf_view:
-    alias: bzl.zf_view.engine
+    alias: bez.zf_view.engine
 
   templating.engine.phtml:
-    alias: bzl.zf_view.engine
+    alias: bez.zf_view.engine
 
-  bzl.zf_view:
-    class: %bzl.zf_view.class%
+  bez.zf_view:
+    class: %bez.zf_view.class%
     calls:
       - [setEventManager, ["@zend.event_manager"]]
 
-  bzl.zf_view.resolver.aggregate:
-    class: %bzl.zf_view.resolver.aggregate.class%
+  bez.zf_view.resolver.aggregate:
+    class: %bez.zf_view.resolver.aggregate.class%
     calls:
-      - [attach, ["@bzl.zf_view.resolver.logical_names"]]
+      - [attach, ["@bez.zf_view.resolver.logical_names"]]
 
-  bzl.zf_view.resolver.logical_names:
-    class: %bzl.zf_view.resolver.logical_names.class%
+  bez.zf_view.resolver.logical_names:
+    class: %bez.zf_view.resolver.logical_names.class%
     arguments: ["@templating.loader", "@templating.name_parser", "@templating.locator"]
 
-  bzl.zf_view.helper_manager:
-    class: Bzl\Bundle\ZfViewBundle\Zend\View\AggregatePluginManager
+  bez.zf_view.helper_manager:
+    class: Bez\ZfViewBundle\Zend\View\AggregatePluginManager
 
-  bzl.zf_view.helper_manager.original:
-    class: Bzl\Bundle\ZfViewBundle\Zend\View\HelperPluginManager
+  bez.zf_view.helper_manager.original:
+    class: Bez\ZfViewBundle\Zend\View\HelperPluginManager
     tags:
       - { name: zf_view.plugin_manager, priority: 1 }
 
-  bzl.zf_view.helper_manager.in_container:
-    class: Bzl\Bundle\ZfViewBundle\Zend\View\HelpersInContainer
+  bez.zf_view.helper_manager.in_container:
+    class: Bez\ZfViewBundle\Zend\View\HelpersInContainer
     arguments: ["@service_container"]
     tags:
       - { name: zf_view.plugin_manager, priority: 2 }
 
-  bzl.zf_view.renderer.php:
+  bez.zf_view.renderer.php:
     class: Zend\View\Renderer\PhpRenderer
     calls:
-      - [setResolver, ["@bzl.zf_view.resolver.aggregate"]]
-      - [setHelperPluginManager, ["@bzl.zf_view.helper_manager"]]
+      - [setResolver, ["@bez.zf_view.resolver.aggregate"]]
+      - [setHelperPluginManager, ["@bez.zf_view.helper_manager"]]
 
   zend.event_manager:
     class: %zend.event_manager.class%
 
 
-  bzl.zf_view.strategy.php:
+  bez.zf_view.strategy.php:
     class: Zend\View\Strategy\PhpRendererStrategy
-    arguments: ["@bzl.zf_view.renderer.php"]
+    arguments: ["@bez.zf_view.renderer.php"]
     tags:
       - { name: zend.event_listener }
 
-  bzl.zf_view.kernel.event_listener:
-    class: Bzl\Bundle\ZfViewBundle\EventListener\KernelListener
-    arguments: ["@zend.event_manager", "@annotation_reader", "@bzl.zf_view.engine", "@sensio_framework_extra.view.guesser"]
+  bez.zf_view.kernel.event_listener:
+    class: Bez\ZfViewBundle\EventListener\KernelListener
+    arguments: ["@zend.event_manager", "@annotation_reader", "@bez.zf_view.engine", "@sensio_framework_extra.view.guesser"]
     tags:
       - {name: kernel.event_subscriber }

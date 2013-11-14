@@ -1,6 +1,6 @@
 <?php
 
-namespace Bzl\Bundle\ZfViewBundle\DependencyInjection;
+namespace Bez\ZfViewBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

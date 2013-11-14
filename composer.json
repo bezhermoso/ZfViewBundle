@@ -24,8 +24,8 @@
     "miniumum-stability" : "dev",
     "autoload": {
         "psr-0": {
-            "Bzl\\Bundle\\ZfViewBundle": ""
+            "Bez\\ZfViewBundle": ""
         }
     },
-    "target-dir": "Bzl/Bundle/ZfViewBundle"
+    "target-dir": "Bez/ZfViewBundle"
 }

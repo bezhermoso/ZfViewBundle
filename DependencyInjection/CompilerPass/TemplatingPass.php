@@ -6,7 +6,7 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass;
+namespace Bez\ZfViewBundle\DependencyInjection\CompilerPass;
 
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -21,7 +21,7 @@ use Symfony\Component\Templating\Loader\FilesystemLoader;
  * Registers overrides to default functionality like template name parsing.
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass
+ * @package Bez\ZfViewBundle\DependencyInjection\CompilerPass
  */
 class TemplatingPass implements CompilerPassInterface
 {
@@ -40,7 +40,7 @@ class TemplatingPass implements CompilerPassInterface
         $container->removeDefinition('templating.name_parser');
         $container->setDefinition('templating.name_parser.original', $origDefinition);
 
-        $container->register('templating.name_parser', 'Bzl\Bundle\ZfViewBundle\Templating\TemplateNameParser')
+        $container->register('templating.name_parser', 'Bez\ZfViewBundle\Templating\TemplateNameParser')
                   ->addArgument(new Reference('templating.name_parser.original'));
 
     }

@@ -6,7 +6,7 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace Bzl\Bundle\ZfViewBundle\Templating;
+namespace Bez\ZfViewBundle\Templating;
 
 use Symfony\Bundle\FrameworkBundle\Templating\TemplateReference;
 use Symfony\Component\Templating\TemplateNameParserInterface;
@@ -18,7 +18,7 @@ use Symfony\Component\Templating\TemplateReferenceInterface;
  * Overrides default functionality by making the 'format' part of a template name optional in .phtml files.
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bzl\Bundle\ZfViewBundle\Templating
+ * @package Bez\ZfViewBundle\Templating
  */
 class TemplateNameParser implements TemplateNameParserInterface
 {

@@ -6,7 +6,7 @@
  * http://www.opensource.org/licenses/mit-license.php
  */
 
-namespace Bzl\Bundle\ZfViewBundle\Zend\Stdlib;
+namespace Bez\ZfViewBundle\Zend\Stdlib;
 
 
 use Zend\Stdlib\ResponseInterface;
@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Response as SfResponse;
  * Decorates Symfony\HttpFoundation\Response with Zend\Stdlib\ResponseInterface
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bzl\Bundle\ZfViewBundle\Zend\Stdlib
+ * @package Bez\ZfViewBundle\Zend\Stdlib
  */
 
 class Response implements ResponseInterface

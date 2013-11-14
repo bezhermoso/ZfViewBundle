@@ -6,7 +6,7 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace Bzl\Bundle\ZfViewBundle\Templating;
+namespace Bez\ZfViewBundle\Templating;
 
 
 use Symfony\Bundle\FrameworkBundle\Templating\TemplateReference;
@@ -17,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Templating\TemplateReference;
  * Template reference for .phtml files. Holds extra logic for cases when 'format' part is not defined in template name.
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bzl\Bundle\ZfViewBundle\Templating
+ * @package Bez\ZfViewBundle\Templating
  */
 class PhtmlTemplateReference extends TemplateReference
 {

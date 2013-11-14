@@ -6,10 +6,10 @@
  * Time: 6:18 AM
  */
 
-namespace Bzl\Bundle\ZfViewBundle\Templating;
+namespace Bez\ZfViewBundle\Templating;
 
-use Bzl\Bundle\ZfViewBundle\Zend\Stdlib\Request;
-use Bzl\Bundle\ZfViewBundle\Zend\Stdlib\Response;
+use Bez\ZfViewBundle\Zend\Stdlib\Request;
+use Bez\ZfViewBundle\Zend\Stdlib\Response;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\GlobalVariables;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -25,7 +25,7 @@ use Symfony\Component\HttpFoundation\Response as SfResponse;
  * Rendering engine integrating Zend\View component.
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bzl\Bundle\ZfViewBundle
+ * @package Bez\ZfViewBundle
  */
 class ZfViewEngine implements EngineInterface
 {

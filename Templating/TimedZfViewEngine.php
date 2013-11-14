@@ -6,7 +6,7 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace Bzl\Bundle\ZfViewBundle\Templating;
+namespace Bez\ZfViewBundle\Templating;
 
 
 use Symfony\Bundle\FrameworkBundle\Templating\GlobalVariables;

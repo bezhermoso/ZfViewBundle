@@ -1,6 +1,6 @@
 <?php
 
-namespace Bzl\Bundle\ZfViewBundle\DependencyInjection;
+namespace Bez\ZfViewBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -31,8 +31,8 @@ class ZfViewExtension extends Extension
         if ($container->getParameter('kernel.debug')) {
 
             $loader->load('debug.yml');
-            $container->setDefinition('bzl.zf_view.engine', $container->findDefinition('debug.bzl.zf_view.engine'));
-            $container->setAlias('debug.bzl.zf_view.engine', 'bzl.zf_view.engine');
+            $container->setDefinition('bez.zf_view.engine', $container->findDefinition('debug.bez.zf_view.engine'));
+            $container->setAlias('debug.bez.zf_view.engine', 'bez.zf_view.engine');
 
         }
 

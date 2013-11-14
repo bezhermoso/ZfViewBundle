@@ -6,10 +6,10 @@
  * http://www.opensource.org/licenses/mit-license.php
  */
 
-namespace Bzl\Bundle\ZfViewBundle\EventListener;
+namespace Bez\ZfViewBundle\EventListener;
 
-use Bzl\Bundle\ZfViewBundle\Configuration\Rendering;
-use Bzl\Bundle\ZfViewBundle\Templating\ZfViewEngine;
+use Bez\ZfViewBundle\Configuration\Rendering;
+use Bez\ZfViewBundle\Templating\ZfViewEngine;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Util\ClassUtils;
 use Sensio\Bundle\FrameworkExtraBundle\Templating\TemplateGuesser;
@@ -27,7 +27,7 @@ use Zend\View\Model\ViewModel;
  * Also resolves an array or ViewModel controller outputs into a Response object.
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bzl\Bundle\ZfViewBundle\EventListener
+ * @package Bez\ZfViewBundle\EventListener
  */
 
 class KernelListener implements EventSubscriberInterface

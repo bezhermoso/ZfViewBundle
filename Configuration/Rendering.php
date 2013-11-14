@@ -6,7 +6,7 @@
  * http://www.opensource.org/licenses/mit-license.php
  */
 
-namespace Bzl\Bundle\ZfViewBundle\Configuration;
+namespace Bez\ZfViewBundle\Configuration;
 
 /**
  * Class Rendering
@@ -14,7 +14,7 @@ namespace Bzl\Bundle\ZfViewBundle\Configuration;
  * Annotation to define view files and other options.
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bzl\Bundle\ZfViewBundle\Configuration
+ * @package Bez\ZfViewBundle\Configuration
  *
  * @Annotation
  */

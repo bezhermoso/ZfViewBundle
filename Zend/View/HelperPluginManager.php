@@ -6,7 +6,7 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace Bzl\Bundle\ZfViewBundle\Zend\View;
+namespace Bez\ZfViewBundle\Zend\View;
 
 use Zend\ServiceManager\ConfigInterface;
 use Zend\View\HelperPluginManager as ZfPluginManager;
@@ -17,7 +17,7 @@ use Zend\View\HelperPluginManager as ZfPluginManager;
  * Zend\View\Helpers dependent on other "bigger" Zend components are removed from default set.
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bzl\Bundle\ZfViewBundle\Zend\View
+ * @package Bez\ZfViewBundle\Zend\View
  */
 class HelperPluginManager extends ZfPluginManager
 {

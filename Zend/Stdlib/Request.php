@@ -6,7 +6,7 @@
  * http://www.opensource.org/licenses/mit-license.php
  */
 
-namespace Bzl\Bundle\ZfViewBundle\Zend\Stdlib;
+namespace Bez\ZfViewBundle\Zend\Stdlib;
 
 
 use Zend\Stdlib\RequestInterface;
@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Request as SfRequest;
  * Decorates Symfony\HttpFoundation\Request with Zend\Stdlib\RequestInterface
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bzl\Bundle\ZfViewBundle\Zend\Stdlib
+ * @package Bez\ZfViewBundle\Zend\Stdlib
  */
 
 class Request implements RequestInterface

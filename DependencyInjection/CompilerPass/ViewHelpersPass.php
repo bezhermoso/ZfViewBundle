@@ -6,9 +6,9 @@
  * http://www.opensource.org/licenses/mit-license.php
  */
 
-namespace Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass;
+namespace Bez\ZfViewBundle\DependencyInjection\CompilerPass;
 
-use Bzl\Bundle\ZfViewBundle\Zend\View\HelpersInContainer;
+use Bez\ZfViewBundle\Zend\View\HelpersInContainer;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\DefinitionDecorator;
@@ -20,7 +20,7 @@ use Symfony\Component\DependencyInjection\Reference;
  * Registers tagged view helpers.
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass
+ * @package Bez\ZfViewBundle\DependencyInjection\CompilerPass
  */
 class ViewHelpersPass implements CompilerPassInterface
 {
@@ -33,11 +33,11 @@ class ViewHelpersPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('bzl.zf_view.helper_manager')) {
+        if (!$container->hasDefinition('bez.zf_view.helper_manager')) {
             return;
         }
 
-        $aggregateManager = $container->getDefinition('bzl.zf_view.helper_manager');
+        $aggregateManager = $container->getDefinition('bez.zf_view.helper_manager');
 
         $pluginManagers = $container->findTaggedServiceIds('zf_view.plugin_manager');
 
@@ -52,7 +52,7 @@ class ViewHelpersPass implements CompilerPassInterface
 
         }
 
-        $helperManager = $container->getDefinition('bzl.zf_view.helper_manager.original');
+        $helperManager = $container->getDefinition('bez.zf_view.helper_manager.original');
         $viewHelpers = $container->findTaggedServiceIds('zend.view_helper');
 
         foreach ($viewHelpers as $id => $tags) {

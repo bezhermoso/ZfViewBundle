@@ -6,7 +6,7 @@
  * http://www.opensource.org/licenses/mit-license.php
  */
 
-namespace Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass;
+namespace Bez\ZfViewBundle\DependencyInjection\CompilerPass;
 
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -19,7 +19,7 @@ use Symfony\Component\DependencyInjection\Reference;
  * Attaches tagged listeners to Zend\EventManager\EventManager instance
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass
+ * @package Bez\ZfViewBundle\DependencyInjection\CompilerPass
  */
 class EventManagerListenersPass implements CompilerPassInterface
 {

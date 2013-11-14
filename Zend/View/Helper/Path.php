@@ -6,7 +6,7 @@
  * http://www.opensource.org/licenses/mit-license.php
  */
 
-namespace Bzl\Bundle\ZfViewBundle\Zend\View\Helper;
+namespace Bez\ZfViewBundle\Zend\View\Helper;
 
 
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
@@ -19,7 +19,7 @@ use Zend\View\Helper\AbstractHelper;
  * Defines path generator helper for use within views.
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bzl\Bundle\ZfViewBundle\Zend\View\Helper
+ * @package Bez\ZfViewBundle\Zend\View\Helper
  */
 class Path extends AbstractHelper
 {

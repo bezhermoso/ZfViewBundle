@@ -6,7 +6,7 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace Bzl\Bundle\ZfViewBundle\Zend\View\Helper;
+namespace Bez\ZfViewBundle\Zend\View\Helper;
 
 
 use Symfony\Component\Security\Acl\Voter\FieldVote;
@@ -19,7 +19,7 @@ use Zend\View\Helper\AbstractHelper;
  * Provides authentication/authorization related queries within views.
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bzl\Bundle\ZfViewBundle\Zend\View\Helper
+ * @package Bez\ZfViewBundle\Zend\View\Helper
  */
 class Security extends AbstractHelper
 {

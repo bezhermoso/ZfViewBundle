@@ -6,7 +6,7 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace Bzl\Bundle\ZfViewBundle\Zend\View;
+namespace Bez\ZfViewBundle\Zend\View;
 
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -17,12 +17,12 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Pulls view helpers from the Symfony2 service container.
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bzl\Bundle\ZfViewBundle\Zend\View
+ * @package Bez\ZfViewBundle\Zend\View
  */
 class HelpersInContainer implements PluginManagerInterface
 {
 
-    const SERVICE_PREFIX = 'bzl.view_helper.decorator.';
+    const SERVICE_PREFIX = 'bez.view_helper.decorator.';
 
     protected $container;
 
