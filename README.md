@@ -38,9 +38,9 @@ framework:
         engines: [ 'twig', 'zf_view' ]
 ```
 
-###Two-step Layout
+###Defining Templates and Layouts
 
-Define templates using the `@Bez\ZfViewBundle\Configuration\Rendering` annotation.
+Define the template and the layout to use using the `@Bez\ZfViewBundle\Configuration\Rendering` annotation.
 
 ```php
 <?php
@@ -105,7 +105,7 @@ In `src/FooBundle/Resources/layout.phtml`
 </html>
 ```
 
-Templates can also be defined within the `@Rendering` annotation in a method and will take precedence:
+Layouts can also be defined within the `@Rendering` annotation in a method and will take precedence:
 
 ```php
 <?php
@@ -121,7 +121,7 @@ Templates can also be defined within the `@Rendering` annotation in a method and
     }
 ```
 
-You can also set `layout` to `"none"` to disable a template if one is defined at the class level:
+You can also set `layout` to `"none"` to disable a layout if one is defined at the class level. This will simply render the template without wrapping it any layout:
 
 ```php
 <?php
