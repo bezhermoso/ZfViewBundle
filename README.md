@@ -51,7 +51,7 @@ use Bez\ZfViewBundle\Configuration\Rendering;
 
 /**
  *
- * @Rendering(template="FooBundle::layout.phtml")
+ * @Rendering(layout="FooBundle::layout.phtml")
  */
 class SomeController extends Controller
 {
@@ -111,7 +111,7 @@ Templates can also be defined within the `@Rendering` annotation in a method and
 <?php
 
     /**
-     * @Rendering("FooBundle:Some:other.phtml", template="FooBundle::secondary.phtml")
+     * @Rendering("FooBundle:Some:other.phtml", layout="FooBundle::secondary.phtml")
      */
     public function otherAction($name)
     {
@@ -121,18 +121,18 @@ Templates can also be defined within the `@Rendering` annotation in a method and
     }
 ```
 
-You can also set `template` to `"none"` to disable a template if one is defined at the class level:
+You can also set `layout` to `"none"` to disable a template if one is defined at the class level:
 
 ```php
 <?php
 
 /**
- * @Rendering(template="::base.phtml")
+ * @Rendering(layout="::base.phtml")
  */
 class FooController
 {
     /**
-     * @Rendering("FooBundle:Foo:bar.phtml", template="none")
+     * @Rendering("FooBundle:Foo:bar.phtml", layout="none")
      */
     public function barAction()
     {
@@ -144,7 +144,7 @@ class FooController
 
 ###Template names
 
-As you can see in the above examples, you can omit the `template` part in naming your `phtml` templates. That is, `FooBundle:Controller:template.phtml` is equivalent to `FooBundle:Controller:template.html.phtml`. 
+As you can see in the above examples, you can omit the `format` part in naming your `phtml` templates. That is, `FooBundle:Controller:template.phtml` is equivalent to `FooBundle:Controller:template.html.phtml`. 
 
 The bundle will look for `bundle:controller:name.format.phtml` or `bundle:controller:name.phtml` and will use whichever exists. 
 
