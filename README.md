@@ -144,7 +144,7 @@ class FooController
 
 ###Template names
 
-As you can see in the above examples, you can omit the `template` portion in naming your `phtml` templates. (You are still welcome to include it still, though.) 
+As you can see in the above examples, you can omit the `template` portion in naming your `phtml` templates. That is, `FooBundle:Controller:template.phtml` is equivalent to `FooBundle:Controller:template.html.phtml`. 
 
 ##View Helpers
 
