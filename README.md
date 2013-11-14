@@ -1,7 +1,7 @@
 ZfViewBundle
 ============
 
-Use the Zend\View multi-step layout paradigm and view helpers within your Symfony2 project.
+Brings the Zend\View templating paradigm of composite views and view helpers within your Symfony2 project.
 
 ##Installation
 
