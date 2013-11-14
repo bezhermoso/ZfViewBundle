@@ -145,3 +145,9 @@ class FooController
 ##View Helpers
 
 Learn more about view helpers here: [View helpers documentation](Resources/docs/view-helpers.md)
+
+##Contributing
+
+####**Contributions are very welcome!**
+
+_No unit tests yet._
