@@ -11,6 +11,14 @@ namespace Bzl\Bundle\ZfViewBundle\Zend\View;
 use Zend\ServiceManager\ConfigInterface;
 use Zend\View\HelperPluginManager as ZfPluginManager;
 
+/**
+ * Class HelperPluginManager
+ *
+ * Zend\View\Helpers dependent on other "bigger" Zend components are removed from default set.
+ *
+ * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
+ * @package Bzl\Bundle\ZfViewBundle\Zend\View
+ */
 class HelperPluginManager extends ZfPluginManager
 {
 

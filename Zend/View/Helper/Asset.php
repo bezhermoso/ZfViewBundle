@@ -12,6 +12,14 @@ namespace Bzl\Bundle\ZfViewBundle\Zend\View\Helper;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Zend\View\Helper\AbstractHelper;
 
+/**
+ * Class Asset
+ *
+ * Equivalent to the 'asset' Twig function within views.
+ *
+ * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
+ * @package Bzl\Bundle\ZfViewBundle\Zend\View\Helper
+ */
 class Asset extends AbstractHelper
 {
     protected $container;

@@ -11,6 +11,14 @@ namespace Bzl\Bundle\ZfViewBundle\Templating;
 
 use Symfony\Bundle\FrameworkBundle\Templating\TemplateReference;
 
+/**
+ * Class PhtmlTemplateReference
+ *
+ * Template reference for .phtml files. Holds extra logic for cases when 'format' part is not defined in template name.
+ *
+ * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
+ * @package Bzl\Bundle\ZfViewBundle\Templating
+ */
 class PhtmlTemplateReference extends TemplateReference
 {
     protected $originalName;

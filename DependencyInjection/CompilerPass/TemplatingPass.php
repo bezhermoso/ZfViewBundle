@@ -15,6 +15,14 @@ use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\Templating\Loader\FilesystemLoader;
 
+/**
+ * Class TemplatingPass
+ *
+ * Registers overrides to default functionality like template name parsing.
+ *
+ * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
+ * @package Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass
+ */
 class TemplatingPass implements CompilerPassInterface
 {
 

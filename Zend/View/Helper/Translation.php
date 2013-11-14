@@ -12,6 +12,14 @@ namespace Bzl\Bundle\ZfViewBundle\Zend\View\Helper;
 use Symfony\Component\Translation\TranslatorInterface;
 use Zend\View\Helper\AbstractHelper;
 
+/**
+ * Class Translation
+ *
+ * Handles translations -- both simple and pluralizations -- within views.
+ *
+ * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
+ * @package Bzl\Bundle\ZfViewBundle\Zend\View\Helper
+ */
 class Translation extends AbstractHelper
 {
     protected $translator;

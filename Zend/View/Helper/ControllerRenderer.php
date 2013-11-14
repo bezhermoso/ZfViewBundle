@@ -13,6 +13,14 @@ use Symfony\Component\HttpKernel\Controller\ControllerReference;
 use Symfony\Component\HttpKernel\Fragment\FragmentHandler;
 use Zend\View\Helper\AbstractHelper;
 
+/**
+ * Class ControllerRenderer
+ *
+ * Equivalent to the 'render(controller(...))' Twig function call.
+ *
+ * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
+ * @package Bzl\Bundle\ZfViewBundle\Zend\View\Helper
+ */
 class ControllerRenderer extends AbstractHelper
 {
     protected $handler;

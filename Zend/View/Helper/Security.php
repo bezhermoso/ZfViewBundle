@@ -13,6 +13,14 @@ use Symfony\Component\Security\Acl\Voter\FieldVote;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Zend\View\Helper\AbstractHelper;
 
+/**
+ * Class Security
+ *
+ * Provides authentication/authorization related queries within views.
+ *
+ * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
+ * @package Bzl\Bundle\ZfViewBundle\Zend\View\Helper
+ */
 class Security extends AbstractHelper
 {
     protected $securityContext;
