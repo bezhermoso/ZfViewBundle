@@ -1,7 +1,7 @@
 ZfViewBundle
 ============
 
-Use the Zend\View multi-step layout paradigm and view helpers within your Symfony2 project.
+Brings the Zend\View templating paradigm of composite views and view helpers within your Symfony2 project.
 
 ##Installation
 
@@ -94,8 +94,8 @@ In `src/FooBundle/Resources/layout.html.phtml`
             <?php
                 
                 /* 
-                 * Child views will be assigned the the content variable by default 
-                 * and thus can be rendered like so:
+                 * Child views will be assigned to the $content variable by default
+                 * and can be accessed like so:
                  */
                 echo $this->content;
                 
@@ -145,3 +145,9 @@ class FooController
 ##View Helpers
 
 Learn more about view helpers here: [View helpers documentation](Resources/docs/view-helpers.md)
+
+##Contributing
+
+####**Contributions are very welcome!**
+
+_No unit tests yet._
