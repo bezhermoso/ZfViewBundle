@@ -42,7 +42,7 @@ class Translation extends AbstractHelper
 
     public function choice($message, $count, array $arguments = array(), $domain = null, $locale = null)
     {
-        return $this->choice(
+        return $this->translator->transChoice(
                         $message,
                         $count,
                         array_merge(array('%count%' => $count), $arguments),
