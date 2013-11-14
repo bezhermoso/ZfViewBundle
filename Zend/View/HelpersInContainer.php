@@ -22,7 +22,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class HelpersInContainer implements PluginManagerInterface
 {
 
-    const SERVICE_PREFIX = 'view_helper.';
+    const SERVICE_PREFIX = 'bzl.view_helper.decorator.';
 
     protected $container;
 

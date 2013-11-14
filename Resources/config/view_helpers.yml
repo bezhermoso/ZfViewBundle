@@ -5,28 +5,28 @@ services:
     class: Bzl\Bundle\ZfViewBundle\Zend\View\Helper\Path
     arguments: ["@router"]
     tags:
-      - { name: zend.view_helper, alias: path }
+      - { name: view_helper, alias: path }
 
   bzl.view_helper.url:
     class: Bzl\Bundle\ZfViewBundle\Zend\View\Helper\Url
     arguments: ["@router"]
     tags:
-      - { name: zend.view_helper, alias: url }
+      - { name: view_helper, alias: url }
 
   bzl.view_helper.security:
     class: Bzl\Bundle\ZfViewBundle\Zend\View\Helper\Security
     arguments: ["@security.context"]
     tags:
-      - { name: zend.view_helper, alias: security }
+      - { name: view_helper, alias: security }
 
   bzl.view_helper.translation:
     class: Bzl\Bundle\ZfViewBundle\Zend\View\Helper\Translation
     arguments: ["@translator"]
     tags:
-      - { name: zend.view_helper, alias: trans }
+      - { name: view_helper, alias: trans }
 
   bzl.view_helper.controller_renderer:
     class: Bzl\Bundle\ZfViewBundle\Zend\View\Helper\ControllerRenderer
     arguments: ["@fragment.handler"]
     tags:
-      - { name: zend.view_helper, alias: controller }
+      - { name: view_helper, alias: controller }

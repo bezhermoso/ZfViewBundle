@@ -8,8 +8,10 @@
 
 namespace Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass;
 
+use Bzl\Bundle\ZfViewBundle\Zend\View\HelpersInContainer;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\DefinitionDecorator;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
@@ -65,12 +67,41 @@ class ViewHelpersPass implements CompilerPassInterface
                 $alias = $attributes['alias'];
 
                 switch ($attributes['type']) {
-                    default:
+                    case "service":
                         $helperManager->addMethodCall('setService', array($alias, new Reference($id)));
                         break;
+                    case "factory":
+                        $helperManager->addMethodCall('setFactory', array($alias, new Reference($id)));
+                        break;
+                    case "invokable":
+                        $helperDef = $container->getDefinition($id);
+                        $helperManager->addMethodCall('setInvokableClass', array($alias, $helperDef->getClass()));
+                        break;
+                    default:
+                        throw new \InvalidArgumentException(
+                            sprintf('Service type can be either "service", "factory", or "invokable". "%s" provided.', $attributes['type']));
                 }
             }
         }
+
+        $viewHelpers = $container->findTaggedServiceIds('view_helper');
+
+        foreach ($viewHelpers as $id => $tags) {
+
+            foreach ($tags as $attributes) {
+
+                $attributes = $this->resolveViewHelperAttributes($attributes);
+
+                if(null == $attributes['alias']) {
+                    throw new \RuntimeException(sprintf('An alias attribute must be specified in all view helpers. None given for service "%s".', $id));
+                }
+
+                $decorator = new DefinitionDecorator($id);
+                $container->setDefinition(HelpersInContainer::SERVICE_PREFIX. $attributes['alias'], $decorator);
+
+            }
+        }
+
     }
 
     public function resolveViewHelperAttributes(array $attributes)
