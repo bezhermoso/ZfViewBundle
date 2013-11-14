@@ -36,3 +36,9 @@ services:
     arguments: ["@service_container"]
     tags:
       - { name: view_helper, alias: asset }
+
+  bez.view_helper.form:
+    class: Bez\ZfViewBundle\Zend\View\Helper\Form
+    arguments: ["@templating.form.renderer"]
+    tags:
+      - { name: view_helper, alias: form }
