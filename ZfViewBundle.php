@@ -9,6 +9,7 @@ namespace Bzl\Bundle\ZfViewBundle;
 
 use Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass\AsseticPass;
 use Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass\EventManagerListenersPass;
+use Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass\TemplatingPass;
 use Bzl\Bundle\ZfViewBundle\DependencyInjection\CompilerPass\ViewHelpersPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -26,6 +27,7 @@ class ZfViewBundle extends Bundle
     {
         parent::build($container);
 
+        $container->addCompilerPass(new TemplatingPass());
         $container->addCompilerPass(new EventManagerListenersPass());
         $container->addCompilerPass(new ViewHelpersPass());
     }

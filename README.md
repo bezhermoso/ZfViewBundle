@@ -51,12 +51,12 @@ use Bzl\Bundle\ZfViewBundle\Configuration\Rendering;
 
 /**
  *
- * @Rendering(template="FooBundle::layout.html.phtml")
+ * @Rendering(template="FooBundle::layout.phtml")
  */
 class SomeController extends Controller
 {
     /**
-     * @Rendering("FooBundle:Some:some.html.phtml")
+     * @Rendering("FooBundle:Some:some.phtml")
      */
     public function someAction($name)
     {
@@ -69,7 +69,7 @@ class SomeController extends Controller
      * @Rendering()
      * 
      * The template name will guessed if none is specified. 
-     * In this example, FooBundle:Some:baz.html.phtml will be used.
+     * In this example, FooBundle:Some:baz.phtml will be used.
      */
     public function bazAction()
     {
@@ -78,13 +78,13 @@ class SomeController extends Controller
 }
 ```
 
-In `src/FooBundle/Resources/views/Some/some.html.phtml`:
+In `src/FooBundle/Resources/views/Some/some.phtml`:
 
 ```php
 Hello <?php echo $this->name; ?>!
 ```
 
-In `src/FooBundle/Resources/layout.html.phtml`
+In `src/FooBundle/Resources/layout.phtml`
 
 ```php
 <html>
@@ -111,7 +111,7 @@ Templates can also be defined within the `@Rendering` annotation in a method and
 <?php
 
     /**
-     * @Rendering("FooBundle:Some:other.html.phtml", template="FooBundle::secondary.html.phtml")
+     * @Rendering("FooBundle:Some:other.phtml", template="FooBundle::secondary.phtml")
      */
     public function otherAction($name)
     {
@@ -127,12 +127,12 @@ You can also set `template` to `"none"` to disable a template if one is defined 
 <?php
 
 /**
- * @Rendering(template="::base.html.phtml")
+ * @Rendering(template="::base.phtml")
  */
 class FooController
 {
     /**
-     * @Rendering("FooBundle:Foo:bar.html.phtml", template="none")
+     * @Rendering("FooBundle:Foo:bar.phtml", template="none")
      */
     public function barAction()
     {
@@ -141,6 +141,10 @@ class FooController
 }
 
 ```
+
+###Template names
+
+As you can see in the above examples, you can omit the `template` portion in naming your `phtml` templates. (You are still welcome to include it still, though.) 
 
 ##View Helpers
 
