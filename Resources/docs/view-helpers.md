@@ -78,6 +78,12 @@ The above helpers work exactly like their Twig counterparts, `{{ path(...) }}` a
     
 ```
 
+Above usage's Twig equivalent is:
+
+```twig
+    {{ render(controller('FooBundle:bar:baz', {id: id})) }}
+```
+
 ###Form helpers
 
 _Not implemented yet._
@@ -86,11 +92,6 @@ _Not implemented yet._
 
 _Assetic not fully supported yet._
 
-Above usage's Twig equivalent is:
-
-```twig
-    {{ render(controller('FooBundle:bar:baz', {id: id})) }}
-```
 
 ###Escaping helpers
 
