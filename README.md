@@ -94,8 +94,8 @@ In `src/FooBundle/Resources/layout.html.phtml`
             <?php
                 
                 /* 
-                 * Child views will be assigned the the content variable by default 
-                 * and thus can be rendered like so:
+                 * Child views will be assigned to the $content variable by default
+                 * and can be accessed like so:
                  */
                 echo $this->content;
                 
