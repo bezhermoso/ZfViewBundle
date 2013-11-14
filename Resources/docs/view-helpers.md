@@ -80,11 +80,11 @@ The above helpers work exactly like their Twig counterparts, `{{ path(...) }}` a
 
 ###Form helpers
 
-_Not implemented yet.__
+_Not implemented yet._
 
 ###Assetic helpers
 
-__Assetic not fully supported yet.__
+_Assetic not fully supported yet._
 
 Above usage's Twig equivalent is:
 
