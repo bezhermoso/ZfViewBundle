@@ -89,7 +89,7 @@ Above usage's Twig equivalent is:
     
 ```
 
-###Other view helpers
+###Other available view helpers which are bundled along with `Zend/View`
 
  - [Doctype](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.doctype.html#zend-view-helpers-initial-doctype)
  - [HeadLink](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.head-link.html#zend-view-helpers-initial-headlink)
