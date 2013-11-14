@@ -23,26 +23,57 @@ class PhtmlTemplateReference extends TemplateReference
 {
     protected $originalName;
 
+    /**
+     * @inheritdoc
+     */
     public function __construct($templateName)
     {
         $this->originalName = $templateName;
 
-        $arguments = func_get_args();
-        array_shift($arguments);
-        call_user_func_array('parent::__construct', $arguments);
+        $args = func_get_args();
+        array_shift($args);
+        call_user_func_array('parent::__construct', $args);
+
     }
 
+    /**
+     * @return string
+     */
     public function getPath()
     {
-        $formatInName = preg_match(sprintf('/\.([^\.]+)\.%s/', $this->get('engine')), $this->originalName);
-
         $controller = str_replace('\\', '/', $this->get('controller'));
-
         $path = (empty($controller) ? '' : $controller . '/');
-        $path .= $this->get('name') .
-                ($formatInName ? '.' . $this->get('format') : '')
+        $path .= $this->get('name') . ($this->get('format') ? '.' . $this->get('format') : '')
                 . '.' . $this->get('engine');
 
         return empty($this->parameters['bundle']) ? 'views/'.$path : '@'.$this->get('bundle').'/Resources/views/'.$path;
+    }
+
+    /**
+     * @param TemplateReference $reference
+     * @return static
+     */
+    public function createFromTemplateReference(TemplateReference $reference)
+    {
+        $phtmlReference = new static(
+                                $reference->getLogicalName(),
+                                $reference->get('bundle'),
+                                $reference->get('controller'),
+                                $reference->get('name'),
+                                $reference->get('format'),
+                                $reference->get('engine'));
+
+        return $phtmlReference;
+
+    }
+
+    /**
+     * @return string
+     */
+    public function getLogicalName()
+    {
+        $bundlePart = implode(':', array($this->get('bundle'), $this->get('controller')));
+        $filePart = implode('.', array_filter(array($this->get('name'), $this->get('format'), $this->get('engine'))));
+        return $bundlePart . ':' . $filePart;
     }
 }

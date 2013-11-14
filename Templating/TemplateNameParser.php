@@ -61,7 +61,7 @@ class TemplateNameParser implements TemplateNameParserInterface
                                     $segments[0],
                                     $segments[1],
                                     reset($fileSegments),
-                                    'html',
+                                    null,
                                     end($fileSegments));
 
             if (count($fileSegments) == 3) {

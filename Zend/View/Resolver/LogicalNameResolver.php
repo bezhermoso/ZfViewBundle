@@ -56,7 +56,18 @@ class LogicalNameResolver implements ResolverInterface
     public function resolve($name, Renderer $renderer = NULL)
     {
         $template = $this->parser->parse($name);
-        $path = $this->locator->locate($template);
+
+        try {
+
+            $path = $this->locator->locate($template);
+
+        } catch (\InvalidArgumentException $e) {
+
+            $template->set('format', null);
+            $path = $this->locator->locate($template);
+
+        }
+
         return $path;
     }
 }
