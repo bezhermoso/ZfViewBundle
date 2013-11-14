@@ -1,5 +1,5 @@
 parameters:
-  bzl.zf_view.engine.class: Bzl\Bundle\ZfViewBundle\ZfViewEngine
+  bzl.zf_view.engine.class: Bzl\Bundle\ZfViewBundle\Templating\ZfViewEngine
   bzl.zf_view.class: Zend\View\View
   bzl.zf_view.resolver.aggregate.class: Zend\View\Resolver\AggregateResolver
   zend.event_manager.class: Zend\EventManager\EventManager

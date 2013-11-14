@@ -6,7 +6,7 @@
  * Time: 6:18 AM
  */
 
-namespace Bzl\Bundle\ZfViewBundle;
+namespace Bzl\Bundle\ZfViewBundle\Templating;
 
 use Bzl\Bundle\ZfViewBundle\Zend\Stdlib\Request;
 use Bzl\Bundle\ZfViewBundle\Zend\Stdlib\Response;

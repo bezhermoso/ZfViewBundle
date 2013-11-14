@@ -9,7 +9,7 @@
 namespace Bzl\Bundle\ZfViewBundle\EventListener;
 
 use Bzl\Bundle\ZfViewBundle\Configuration\Rendering;
-use Bzl\Bundle\ZfViewBundle\ZfViewEngine;
+use Bzl\Bundle\ZfViewBundle\Templating\ZfViewEngine;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Util\ClassUtils;
 use Sensio\Bundle\FrameworkExtraBundle\Templating\TemplateGuesser;
