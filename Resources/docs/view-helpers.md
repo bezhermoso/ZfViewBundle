@@ -84,6 +84,15 @@ Above usage's Twig equivalent is:
     {{ render(controller('FooBundle:bar:baz', {id: id})) }}
 ```
 
+###Form helpers
+
+_Not implemented yet._
+
+###Assetic helpers
+
+_Assetic not fully supported yet._
+
+
 ###Escaping helpers
 
 ```php
