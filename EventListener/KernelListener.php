@@ -101,13 +101,13 @@ class KernelListener implements EventSubscriberInterface
 
             $viewModel = new ViewModel();
             $viewModel->setVariables($results);
-            $viewModel->setTemplate($rendering->getViewName());
+            $viewModel->setTemplate($rendering->getTemplate());
             $viewModel->setOption('formatAs', $rendering->getFormat());
 
-            if ($rendering->getTemplate() != null
-            && strtolower($rendering->getTemplate()) != "none") {
+            if ($rendering->getLayout() != null
+            && strtolower($rendering->getLayout()) != "none") {
                 $template = new ViewModel();
-                $template->setTemplate($rendering->getTemplate());
+                $template->setTemplate($rendering->getLayout());
                 $template->addChild($viewModel);
                 $viewModel = $template;
                 unset($template);
@@ -146,9 +146,9 @@ class KernelListener implements EventSubscriberInterface
                 $methodRenderingConfig->merge($classRenderingConfig);
             }
 
-            if (!$methodRenderingConfig->getViewName()) {
+            if (!$methodRenderingConfig->getTemplate()) {
                 $name = $this->guesser->guessTemplateName($controller, $request, 'phtml');
-                $methodRenderingConfig->setViewName($name->getLogicalName());
+                $methodRenderingConfig->setTemplate($name->getLogicalName());
             }
         }
 

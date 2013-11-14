@@ -20,9 +20,9 @@ namespace Bez\ZfViewBundle\Configuration;
  */
 class Rendering
 {
-    protected $viewName;
-
     protected $template;
+
+    protected $layout;
 
     protected $format = 'html';
 
@@ -35,34 +35,9 @@ class Rendering
         }
     }
 
-    public function setValue($value)
-    {
-        $this->setViewName($value);
-    }
-
-    public function setViewName($viewName)
-    {
-        $this->viewName = $viewName;
-    }
-
-    public function setTemplate($template)
-    {
-        $this->template = $template;
-    }
-
     public function setFormat($format)
     {
         $this->format = $format;
-    }
-
-    public function getViewName()
-    {
-        return $this->viewName;
-    }
-
-    public function getTemplate()
-    {
-        return $this->template;
     }
 
     public function getFormat()
@@ -70,10 +45,30 @@ class Rendering
         return $this->format;
     }
 
+    public function setLayout($layout)
+    {
+        $this->layout = $layout;
+    }
+
+    public function getLayout()
+    {
+        return $this->layout;
+    }
+
+    public function setTemplate($template)
+    {
+        $this->template = $template;
+    }
+
+    public function getTemplate()
+    {
+        return $this->template;
+    }
+
     public function merge(Rendering $rendering)
     {
-        if (!$this->getViewName())
-            $this->setViewName($rendering->getViewName());
+        if (!$this->getLayout())
+            $this->setLayout($rendering->getLayout());
 
         if (!$this->getTemplate())
             $this->setTemplate($rendering->getTemplate());
