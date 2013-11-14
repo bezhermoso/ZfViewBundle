@@ -38,7 +38,7 @@ framework:
         engines: [ 'twig', 'zf_view' ]
 ```
 
-###Multi-step Layouts
+###Two-step Layout
 
 Define templates using the `@Bez\ZfViewBundle\Configuration\Rendering` annotation.
 
@@ -69,7 +69,7 @@ class SomeController extends Controller
      * @Rendering()
      * 
      * The template name will guessed if none is specified. 
-     * In this example, FooBundle:Some:baz.html.phtml will be used.
+     * In this example, FooBundle:Some:baz.phtml will be used.
      */
     public function bazAction()
     {
@@ -145,7 +145,8 @@ class FooController
 ###Template names
 
 As you can see in the above examples, you can omit the `template` part in naming your `phtml` templates. That is, `FooBundle:Controller:template.phtml` is equivalent to `FooBundle:Controller:template.html.phtml`. 
-However if you do not choose to explicitly define the view template's name in your method annotation and rely on template name guessing, you must include the `format` part in your view file name.
+
+The bundle will look for `bundle:controller:name.format.phtml` or `bundle:controller:name.phtml` and will use whichever exists. 
 
 ##View Helpers
 
