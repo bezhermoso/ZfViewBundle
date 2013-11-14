@@ -38,7 +38,7 @@ framework:
         engines: [ 'twig', 'zf_view' ]
 ```
 
-###Multi-step Layouts
+###Two-step Layout
 
 Define templates using the `@Bez\ZfViewBundle\Configuration\Rendering` annotation.
 
