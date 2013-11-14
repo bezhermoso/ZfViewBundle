@@ -34,7 +34,7 @@ class HelperPluginManager extends ZfPluginManager
             'headmeta'            => 'Zend\View\Helper\HeadMeta',
             'headscript'          => 'Zend\View\Helper\HeadScript',
             'headstyle'           => 'Zend\View\Helper\HeadStyle',
-            'headtitle'           => 'Zend\View\Helper\HeadTitle',
+            //'headtitle'           => 'Zend\View\Helper\HeadTitle',
             //'htmlflash'           => 'Zend\View\Helper\HtmlFlash',
             //'htmllist'            => 'Zend\View\Helper\HtmlList',
             //'htmlobject'          => 'Zend\View\Helper\HtmlObject',

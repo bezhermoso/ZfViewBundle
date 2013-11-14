@@ -30,3 +30,9 @@ services:
     arguments: ["@fragment.handler"]
     tags:
       - { name: view_helper, alias: controller }
+
+  bzl.view_helper.asset:
+    class: Bzl\Bundle\ZfViewBundle\Zend\View\Helper\Asset
+    arguments: ["@service_container"]
+    tags:
+      - { name: view_helper, alias: asset }
