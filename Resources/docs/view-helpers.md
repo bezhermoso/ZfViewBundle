@@ -23,6 +23,16 @@ Just like Twig functions, view helpers provide you various functionalities avail
 
 The above helpers work exactly like their Twig counterparts, `{{ path(...) }}` and `{{ url(...) }}`.
 
+###Asset helpers
+
+```php
+<img src="<?php echo $this->asset('img/nyancat.png');" />
+
+<?php
+    $this->headScript()->appendFile($this->asset('js/nyan-cat-plugin.js'));
+?>
+```
+
 ###Authentication/authorization helpers
 
 ```php
@@ -95,7 +105,6 @@ Above usage's Twig equivalent is:
  - [HeadLink](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.head-link.html#zend-view-helpers-initial-headlink)
  - [HeadScript](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.head-script.html#zend-view-helpers-initial-headscript)
  - [InlineScript](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.inline-script.html#zend-view-helpers-initial-inlinescript)
- - [HeadTitle](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.head-title.html#zend-view-helpers-initial-headtitle)
  - [HeadMeta](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.head-meta.html#zend-view-helpers-initial-headmeta)
  - [Partial](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.html#partial-helper)
  - [PartialLoop](http://framework.zend.com/manual/2.0/en/modules/zend.view.helpers.html#partial-helper)
