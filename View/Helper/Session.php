@@ -6,7 +6,7 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace Bez\ZfViewBundle\Zend\View\Helper;
+namespace Bez\ZfViewBundle\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
 

@@ -6,7 +6,7 @@
  * Time: 3:06 AM
  */
 
-namespace Bez\ZfViewBundle\Zend\View\Resolver;
+namespace Bez\ZfViewBundle\View\Resolver;
 
 
 use Symfony\Component\Config\FileLocatorInterface;
@@ -21,7 +21,7 @@ use Zend\View\Resolver\ResolverInterface;
  * Resolves Symfony's template names to their actual paths for use in ViewModel.
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bez\ZfViewBundle\Zend\View\Resolver
+ * @package Bez\ZfViewBundle\View\Resolver
  */
 class LogicalNameResolver implements ResolverInterface
 {

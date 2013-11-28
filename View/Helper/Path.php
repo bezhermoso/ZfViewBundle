@@ -1,26 +1,27 @@
 <?php
 /**
  * Copyright 2013 Bezalel Hermoso <bezalelhermoso@gmail.com>
- * 
+ *
  * This project is free software released under the MIT license:
- * http://www.opensource.org/licenses/mit-license.php 
+ * http://www.opensource.org/licenses/mit-license.php
  */
 
-namespace Bez\ZfViewBundle\Zend\View\Helper;
+namespace Bez\ZfViewBundle\View\Helper;
 
 
+use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Zend\View\Helper\AbstractHelper;
 
 /**
- * Class Url
+ * Class Path
  *
- * URL generation helper within views.
+ * Defines path generator helper for use within views.
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bez\ZfViewBundle\Zend\View\Helper
+ * @package Bez\ZfViewBundle\View\Helper
  */
-class Url extends AbstractHelper
+class Path extends AbstractHelper
 {
     protected $generator;
 
@@ -32,8 +33,8 @@ class Url extends AbstractHelper
     public function __invoke($routeName, array $params = null, $relative = false)
     {
         return $this->generator->generate(
-                            $routeName,
-                            $params ?: array(),
-                            $relative ? UrlGeneratorInterface::NETWORK_PATH : UrlGeneratorInterface::ABSOLUTE_URL);
+                                    $routeName,
+                                    $params,
+                                    $relative ? UrlGeneratorInterface::RELATIVE_PATH : UrlGeneratorInterface::ABSOLUTE_PATH);
     }
 } 

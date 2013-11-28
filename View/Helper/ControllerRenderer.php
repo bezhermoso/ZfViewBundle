@@ -6,7 +6,7 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace Bez\ZfViewBundle\Zend\View\Helper;
+namespace Bez\ZfViewBundle\View\Helper;
 
 
 use Symfony\Component\HttpKernel\Controller\ControllerReference;
@@ -19,7 +19,7 @@ use Zend\View\Helper\AbstractHelper;
  * Equivalent to the 'render(controller(...))' Twig function call.
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bez\ZfViewBundle\Zend\View\Helper
+ * @package Bez\ZfViewBundle\View\Helper
  */
 class ControllerRenderer extends AbstractHelper
 {

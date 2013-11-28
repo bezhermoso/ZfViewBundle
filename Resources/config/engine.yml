@@ -4,7 +4,7 @@ parameters:
   bez.zf_view.resolver.aggregate.class: Zend\View\Resolver\AggregateResolver
   zend.event_manager.class: Zend\EventManager\EventManager
 
-  bez.zf_view.resolver.logical_names.class: Bez\ZfViewBundle\Zend\View\Resolver\LogicalNameResolver
+  bez.zf_view.resolver.logical_names.class: Bez\ZfViewBundle\View\Resolver\LogicalNameResolver
 
 services:
 
@@ -36,15 +36,15 @@ services:
     arguments: ["@templating.loader", "@templating.name_parser", "@templating.locator"]
 
   bez.zf_view.helper_manager:
-    class: Bez\ZfViewBundle\Zend\View\AggregatePluginManager
+    class: Bez\ZfViewBundle\View\AggregatePluginManager
 
   bez.zf_view.helper_manager.original:
-    class: Bez\ZfViewBundle\Zend\View\HelperPluginManager
+    class: Bez\ZfViewBundle\View\HelperPluginManager
     tags:
       - { name: zf_view.plugin_manager, priority: 1 }
 
   bez.zf_view.helper_manager.in_container:
-    class: Bez\ZfViewBundle\Zend\View\HelpersInContainer
+    class: Bez\ZfViewBundle\View\HelpersInContainer
     arguments: ["@service_container"]
     tags:
       - { name: zf_view.plugin_manager, priority: 2 }

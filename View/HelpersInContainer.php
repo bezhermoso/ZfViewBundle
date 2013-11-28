@@ -6,9 +6,10 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace Bez\ZfViewBundle\Zend\View;
+namespace Bez\ZfViewBundle\View;
 
 
+use Bez\ZfViewBundle\View\PluginManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -17,7 +18,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Pulls view helpers from the Symfony2 service container.
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bez\ZfViewBundle\Zend\View
+ * @package Bez\ZfViewBundle\View
  */
 class HelpersInContainer implements PluginManagerInterface
 {

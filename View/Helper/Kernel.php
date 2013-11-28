@@ -6,21 +6,12 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace Bez\ZfViewBundle\Zend\View\Helper;
-
+namespace Bez\ZfViewBundle\View\Helper;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Zend\View\Helper\AbstractHelper;
 
-/**
- * Class Asset
- *
- * Equivalent to the 'asset' Twig function within views.
- *
- * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bez\ZfViewBundle\Zend\View\Helper
- */
-class Asset extends AbstractHelper
+class Kernel extends AbstractHelper
 {
     protected $container;
 
@@ -29,8 +20,13 @@ class Asset extends AbstractHelper
         $this->container = $container;
     }
 
-    public function __invoke($asset, $packageName = null)
+    public function env()
     {
-        return $this->container->get('templating.helper.assets')->getUrl($asset, $packageName);
+        return $this->container->getParameter('kernel.environment');
+    }
+
+    public function debug()
+    {
+        return $this->container->getParameter('kernel.debug');
     }
 } 

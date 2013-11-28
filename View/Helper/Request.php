@@ -6,12 +6,13 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace Bez\ZfViewBundle\Zend\View\Helper;
+namespace Bez\ZfViewBundle\View\Helper;
+
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Zend\View\Helper\AbstractHelper;
 
-class Kernel extends AbstractHelper
+class Request extends AbstractHelper
 {
     protected $container;
 
@@ -20,13 +21,10 @@ class Kernel extends AbstractHelper
         $this->container = $container;
     }
 
-    public function env()
+    public function __invoke()
     {
-        return $this->container->getParameter('kernel.environment');
+        if ($this->container->has('request') && $request = $this->container->get('request')) {
+            return $request;
+        }
     }
-
-    public function debug()
-    {
-        return $this->container->getParameter('kernel.debug');
-    }
-} 
+}

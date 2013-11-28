@@ -6,7 +6,7 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace Bez\ZfViewBundle\Zend\View\Helper;
+namespace Bez\ZfViewBundle\View\Helper;
 
 
 use Symfony\Component\Translation\TranslatorInterface;
@@ -18,7 +18,7 @@ use Zend\View\Helper\AbstractHelper;
  * Handles translations -- both simple and pluralizations -- within views.
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bez\ZfViewBundle\Zend\View\Helper
+ * @package Bez\ZfViewBundle\View\Helper
  */
 class Translation extends AbstractHelper
 {

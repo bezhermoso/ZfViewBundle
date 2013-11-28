@@ -8,7 +8,7 @@
 
 namespace Bez\ZfViewBundle\DependencyInjection\CompilerPass;
 
-use Bez\ZfViewBundle\Zend\View\HelpersInContainer;
+use Bez\ZfViewBundle\View\HelpersInContainer;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\DefinitionDecorator;

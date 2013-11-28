@@ -6,8 +6,9 @@
  * http://www.opensource.org/licenses/mit-license.php 
  */
 
-namespace Bez\ZfViewBundle\Zend\View;
+namespace Bez\ZfViewBundle\View;
 
+use Bez\ZfViewBundle\View\PluginManagerInterface;
 use Zend\Stdlib\SplPriorityQueue;
 use Zend\View\HelperPluginManager;
 
@@ -17,7 +18,7 @@ use Zend\View\HelperPluginManager;
  * Aggregates view helper managers.
  *
  * @author Bezalel Hermoso <bezalelhermoso@gmail.com>
- * @package Bez\ZfViewBundle\Zend\View
+ * @package Bez\ZfViewBundle\View
  */
 class AggregatePluginManager extends HelperPluginManager implements PluginManagerInterface
 {
@@ -81,7 +82,7 @@ class AggregatePluginManager extends HelperPluginManager implements PluginManage
         } else {
             throw new \InvalidArgumentException(
                 sprintf('Expected instance of "%s" or "%s". Instance of "%s" given.',
-                        'Bez\ZfViewBundle\Zend\View\PluginManagerInterface',
+                        'Bez\ZfViewBundle\View\PluginManagerInterface',
                         'Zend\View\HelperPluginManager',
                         is_object($pluginManager) ? get_class($pluginManager) : $pluginManager));
         }

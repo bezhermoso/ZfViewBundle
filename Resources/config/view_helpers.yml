@@ -2,60 +2,60 @@ parameters:
 
 services:
   bez.view_helper.path:
-    class: Bez\ZfViewBundle\Zend\View\Helper\Path
+    class: Bez\ZfViewBundle\View\Helper\Path
     arguments: ["@router"]
     tags:
       - { name: view_helper, alias: path }
 
   bez.view_helper.url:
-    class: Bez\ZfViewBundle\Zend\View\Helper\Url
+    class: Bez\ZfViewBundle\View\Helper\Url
     arguments: ["@router"]
     tags:
       - { name: view_helper, alias: url }
 
   bez.view_helper.security:
-    class: Bez\ZfViewBundle\Zend\View\Helper\Security
+    class: Bez\ZfViewBundle\View\Helper\Security
     arguments: ["@security.context"]
     tags:
       - { name: view_helper, alias: security }
 
   bez.view_helper.translation:
-    class: Bez\ZfViewBundle\Zend\View\Helper\Translation
+    class: Bez\ZfViewBundle\View\Helper\Translation
     arguments: ["@translator"]
     tags:
       - { name: view_helper, alias: trans }
 
   bez.view_helper.controller_renderer:
-    class: Bez\ZfViewBundle\Zend\View\Helper\ControllerRenderer
+    class: Bez\ZfViewBundle\View\Helper\ControllerRenderer
     arguments: ["@fragment.handler"]
     tags:
       - { name: view_helper, alias: controller }
 
   bez.view_helper.asset:
-    class: Bez\ZfViewBundle\Zend\View\Helper\Asset
+    class: Bez\ZfViewBundle\View\Helper\Asset
     arguments: ["@service_container"]
     tags:
       - { name: view_helper, alias: asset }
 
   bez.view_helper.form:
-    class: Bez\ZfViewBundle\Zend\View\Helper\Form
+    class: Bez\ZfViewBundle\View\Helper\Form
     arguments: ["@templating.form.renderer"]
     tags:
       - { name: view_helper, alias: form }
 
   bzl.view_helper.request:
-    class: Bez\ZfViewBundle\Zend\View\Helper\Request
+    class: Bez\ZfViewBundle\View\Helper\Request
     arguments: ["@service_container"]
     tags:
       - { name: view_helper, alias: request }
 
   bzl.view_helper.session:
-    class: Bez\ZfViewBundle\Zend\View\Helper\Session
+    class: Bez\ZfViewBundle\View\Helper\Session
     tags:
       - { name: view_helper, alias: session }
 
   bzl.view_helper.kernel:
-    class: Bez\ZfViewBundle\Zend\View\Helper\Kernel
+    class: Bez\ZfViewBundle\View\Helper\Kernel
     arguments: ["@service_container"]
     tags:
       - { name: view_helper, alias: kernel }
