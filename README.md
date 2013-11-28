@@ -151,6 +151,33 @@ As you can see in the above examples, you can omit the `format` part in naming y
 
 The bundle will look for `bundle:controller:name.format.phtml` or `bundle:controller:name.phtml` and will use whichever exists. 
 
+##Explicit view composition
+
+Returning a pre-configured ViewModel is also possible:
+
+```php
+
+class DefaultController
+{
+    public function indexAction()
+    {
+        $content = new ViewModel();
+        $content->setTemplate('FooBundle:Default:index.phtml')
+                ->setCaptureTo('content'); //Default.
+
+        $sideBar = new ViewModel();
+        $sideBar->setTemplate('FooBundle::sidebar.phtml');
+        $sideBar->setCaptureTo('sidebar'); //This child-view will be outputted via $this->sidebar in the parent view.
+
+        $layout = new ViewModel();
+        $layout->setTemplate('FooBundle::layout.phtml');
+        $layout->addChild($content);
+        $layout->addChild($sideBar);
+
+        return $layout;
+    }
+}
+
 ##View Helpers
 
 Learn more about view helpers here: [View helpers documentation](Resources/docs/view-helpers.md)
