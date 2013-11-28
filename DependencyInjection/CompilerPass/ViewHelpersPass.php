@@ -29,6 +29,7 @@ class ViewHelpersPass implements CompilerPassInterface
      * You can modify the container here before it is dumped to PHP code.     *
      * @param ContainerBuilder $container
      * @throws \RuntimeException
+     * @throws \InvalidArgumentException
      * @api
      */
     public function process(ContainerBuilder $container)
@@ -61,7 +62,10 @@ class ViewHelpersPass implements CompilerPassInterface
                 $attributes = $this->resolveViewHelperAttributes($attributes);
 
                 if(null == $attributes['alias']) {
-                    throw new \RuntimeException(sprintf('An alias attribute must be specified in all view helpers. None given for service "%s".', $id));
+
+                    $helperDef = $container->getDefinition($id);
+                    $attributes['alias'] = lcfirst(basename($helperDef->getClass()));
+                    //throw new \RuntimeException(sprintf('An alias attribute must be specified in all view helpers. None given for service "%s".', $id));
                 }
 
                 $alias = $attributes['alias'];
@@ -93,7 +97,10 @@ class ViewHelpersPass implements CompilerPassInterface
                 $attributes = $this->resolveViewHelperAttributes($attributes);
 
                 if(null == $attributes['alias']) {
-                    throw new \RuntimeException(sprintf('An alias attribute must be specified in all view helpers. None given for service "%s".', $id));
+
+                    $helperDef = $container->getDefinition($id);
+                    $attributes['alias'] = lcfirst(basename($helperDef->getClass()));
+                    //throw new \RuntimeException(sprintf('An alias attribute must be specified in all view helpers. None given for service "%s".', $id));
                 }
 
                 $decorator = new DefinitionDecorator($id);

@@ -42,3 +42,21 @@ services:
     arguments: ["@templating.form.renderer"]
     tags:
       - { name: view_helper, alias: form }
+
+  bzl.view_helper.request:
+    class: Bez\ZfViewBundle\Zend\View\Helper\Request
+    arguments: ["@service_container"]
+    tags:
+      - { name: view_helper, alias: request }
+
+  bzl.view_helper.session:
+    class: Bez\ZfViewBundle\Zend\View\Helper\Session
+    tags:
+      - { name: view_helper, alias: session }
+
+  bzl.view_helper.kernel:
+    class: Bez\ZfViewBundle\Zend\View\Helper\Kernel
+    arguments: ["@service_container"]
+    tags:
+      - { name: view_helper, alias: kernel }
+
