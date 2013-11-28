@@ -105,6 +105,10 @@ This simply proxies `Request#getSession`.
     $this->session()->has('bar');
     $this->session()->all();
     
+    foreach ($this->session()->getFlashBag()->get('error', array()) as $error) {
+        echo '<div class="sys-error">' . $error . '</div>';
+    }
+    
 ```
 
 ###Kernel helper
