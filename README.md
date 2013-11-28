@@ -177,6 +177,7 @@ class DefaultController
         return $layout;
     }
 }
+```
 
 ##View Helpers
 
