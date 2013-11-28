@@ -157,6 +157,8 @@ Returning a pre-configured ViewModel is also possible:
 
 ```php
 
+use Zend\View\Model\ViewModel;
+
 class DefaultController
 {
     public function indexAction()
