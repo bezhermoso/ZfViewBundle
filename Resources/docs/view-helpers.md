@@ -84,7 +84,44 @@ Above usage's Twig equivalent is:
     {{ render(controller('FooBundle:bar:baz', {id: id})) }}
 ```
 
+###Request helper
+
+Exposes the `Request` object.
+
+```php
+<?php
+
+    $this->request();
+```
+
+###Session helper
+
+This simply proxies `Request#getSession`.
+
+```php
+<?php
+    
+    $this->session()->get('foo');
+    $this->session()->has('bar');
+    $this->session()->all();
+    
+```
+
+###Kernel helper
+
+Can be used to query the environment and debug variables.
+
+```php
+<?php
+    
+    $this->kernel()->env();
+    $this->kernel()->debug();
+    
+```
+
 ###Form helpers
+
+_These form helpers simply re-uses the form rendering engine from Symfony's built-in PHP templating and exposes them as view helpers._
 
 ```php
     <?php echo $this->form()->start($form); ?>
@@ -158,10 +195,12 @@ services:
 
 ```
 
-Note the `alias` attribute. This is required. In the above example, you can invoke your view helper via this call:
+Note the `alias` attribute. In the above example, you can invoke your view helper via this call:
 
 ```php
     echo $this->mailTo("me@mydomain.com", array('subject' => 'Hello!'));
 ```
+
+The `alias` attribute can be omitted. In such cases, the alias is derived from the class name, i.e., `FooBundle\ViewHelper\GravatarPic` will be aliased with `gravatarPic`. 
 
 If the `__invoke` method is defined in your view helper, arguments are passed to it as-is. Otherwise, the view helper instance is returned instead.
