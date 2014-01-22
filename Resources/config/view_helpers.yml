@@ -43,20 +43,25 @@ services:
     tags:
       - { name: view_helper, alias: form }
 
-  bzl.view_helper.request:
+  bez.view_helper.request:
     class: Bez\ZfViewBundle\View\Helper\Request
     arguments: ["@service_container"]
     tags:
       - { name: view_helper, alias: request }
 
-  bzl.view_helper.session:
+  bez.view_helper.session:
     class: Bez\ZfViewBundle\View\Helper\Session
     tags:
       - { name: view_helper, alias: session }
 
-  bzl.view_helper.kernel:
+  bez.view_helper.kernel:
     class: Bez\ZfViewBundle\View\Helper\Kernel
     arguments: ["@service_container"]
     tags:
       - { name: view_helper, alias: kernel }
 
+  bez.view_helper.layout:
+    class: Bez\ZfViewBundle\View\Helper\Layout
+    arguments: ["@service_container"]
+    tags:
+      - { name: view_helper, alias: layout }

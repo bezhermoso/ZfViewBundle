@@ -15,6 +15,10 @@ services:
     tags:
       - { name: templating.engine }
 
+  bez.view_model:
+    class: Zend\View\Model\ViewModel
+    scope: request
+
   templating.engine.zf_view:
     alias: bez.zf_view.engine
 
@@ -67,6 +71,6 @@ services:
 
   bez.zf_view.kernel.event_listener:
     class: Bez\ZfViewBundle\EventListener\KernelListener
-    arguments: ["@zend.event_manager", "@annotation_reader", "@bez.zf_view.engine", "@sensio_framework_extra.view.guesser"]
+    arguments: ["@zend.event_manager", "@annotation_reader", "@bez.zf_view.engine", "@sensio_framework_extra.view.guesser", "@service_container"]
     tags:
       - {name: kernel.event_subscriber }

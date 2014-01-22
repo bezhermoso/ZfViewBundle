@@ -13,6 +13,7 @@ use Bez\ZfViewBundle\Templating\ZfViewEngine;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Util\ClassUtils;
 use Sensio\Bundle\FrameworkExtraBundle\Templating\TemplateGuesser;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
@@ -40,17 +41,20 @@ class KernelListener implements EventSubscriberInterface
 
     protected $guesser;
 
+    protected $container;
 
     public function __construct(
         EventManager $events,
         Reader $reader,
         ZfViewEngine $engine,
-        TemplateGuesser $guesser
+        TemplateGuesser $guesser,
+        ContainerInterface $container
     ) {
         $this->eventManager = $events;
         $this->reader = $reader;
         $this->engine = $engine;
         $this->guesser = $guesser;
+        $this->container = $container;
     }
 
     /**
@@ -97,15 +101,22 @@ class KernelListener implements EventSubscriberInterface
 
             /** @var $rendering Rendering */
             $rendering = $request->attributes->get('__rendering');
+
             $this->eventManager->trigger('render', $event);
 
-            $viewModel = new ViewModel();
+            $viewModel = $this->container->get('bez.view_model');
             $viewModel->setVariables($results);
             $viewModel->setTemplate($rendering->getTemplate());
             $viewModel->setOption('formatAs', $rendering->getFormat());
 
-            if ($rendering->getLayout() != null
-            && strtolower($rendering->getLayout()) != "none") {
+            $templateName = $viewModel->getTemplate();
+
+            if ($templateName == null
+            && $rendering->getLayout() != null && strtolower($rendering->getLayout()) != 'none') {
+                $templateName = $rendering->getTemplate();
+            }
+
+            if ($templateName) {
                 $template = new ViewModel();
                 $template->setTemplate($rendering->getLayout());
                 $template->addChild($viewModel);
