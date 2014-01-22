@@ -63,5 +63,6 @@ services:
   bez.view_helper.layout:
     class: Bez\ZfViewBundle\View\Helper\Layout
     arguments: ["@service_container"]
+    scope: request
     tags:
       - { name: view_helper, alias: layout }

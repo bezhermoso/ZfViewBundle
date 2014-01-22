@@ -17,6 +17,8 @@ class Layout extends AbstractHelper
 {
     protected $container;
 
+    protected $layout;
+
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
@@ -37,6 +39,11 @@ class Layout extends AbstractHelper
 
     public function __invoke($layout)
     {
-        $this->getViewModel()->setTemplate((string) $layout);
+        $this->layout = (string) $layout;
+    }
+
+    public function getLayout()
+    {
+        return $this->layout;
     }
 }

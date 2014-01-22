@@ -10,6 +10,7 @@ namespace Bez\ZfViewBundle\EventListener;
 
 use Bez\ZfViewBundle\Configuration\Rendering;
 use Bez\ZfViewBundle\Templating\ZfViewEngine;
+use Bez\ZfViewBundle\View\PluginManagerInterface;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Util\ClassUtils;
 use Sensio\Bundle\FrameworkExtraBundle\Templating\TemplateGuesser;
@@ -43,11 +44,14 @@ class KernelListener implements EventSubscriberInterface
 
     protected $container;
 
+    protected $plugins;
+
     public function __construct(
         EventManager $events,
         Reader $reader,
         ZfViewEngine $engine,
         TemplateGuesser $guesser,
+        PluginManagerInterface $plugins,
         ContainerInterface $container
     ) {
         $this->eventManager = $events;
@@ -55,6 +59,7 @@ class KernelListener implements EventSubscriberInterface
         $this->engine = $engine;
         $this->guesser = $guesser;
         $this->container = $container;
+        $this->plugins = $plugins;
     }
 
     /**
@@ -91,6 +96,8 @@ class KernelListener implements EventSubscriberInterface
 
         $results = $event->getControllerResult();
 
+        $layout = $this->plugins->get('layout');
+
         if (is_array($results)) {
 
             $request = $event->getRequest();
@@ -109,23 +116,21 @@ class KernelListener implements EventSubscriberInterface
             $viewModel->setTemplate($rendering->getTemplate());
             $viewModel->setOption('formatAs', $rendering->getFormat());
 
-            $templateName = $viewModel->getTemplate();
-
-            if ($templateName == null
-            && $rendering->getLayout() != null && strtolower($rendering->getLayout()) != 'none') {
-                $templateName = $rendering->getTemplate();
-            }
-
-            if ($templateName) {
-                $template = new ViewModel();
-                $template->setTemplate($rendering->getLayout());
-                $template->addChild($viewModel);
-                $viewModel = $template;
-                unset($template);
+            if ($rendering->getLayout() != null && strtolower($rendering->getLayout()) != 'none') {
+                $layout($rendering->getLayout());
             }
 
         } elseif ($results instanceof ViewModel) {
             $viewModel = $results;
+        }
+
+
+        if ($layout->getLayout()) {
+            $template = new ViewModel();
+            $template->setTemplate($layout->getLayout());
+            $template->addChild($viewModel);
+            $viewModel = $template;
+            unset($template);
         }
 
         if(null !== $viewModel) {
