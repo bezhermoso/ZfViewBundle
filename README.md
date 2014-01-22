@@ -146,7 +146,7 @@ class FooController
 ```
 ###Defining the layout within templates
 
-This is certainly useful when you wish to substitute templates used by third-party bundles through your application configuration.
+This is certainly useful when you wish to substitute templates used by third-party bundles through your application configuration. Declaring layouts in this manner will override any rendering configuration on the controller that are set via annotations.
 
 In your template file:
 ```php
@@ -163,7 +163,6 @@ $this->placeholder('sidebar')->captureStart();
 $this->placeholder('sidebar')->captureEnd();
 
 ```
-
 
 ##Template names
 
