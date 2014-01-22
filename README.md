@@ -11,7 +11,7 @@ _2014-01-22 update:_
 
 You can install this bundle via Composer:
 
-`php composer.phar require bez/zfview-bundle:dev-master`
+`php composer.phar require bez/zfview-bundle:v0.1.0`
 
 Register the bundle in `app/AppKernel.php`:
 

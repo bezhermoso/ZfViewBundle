@@ -18,6 +18,9 @@ services:
   bez.view_model:
     class: Zend\View\Model\ViewModel
     scope: request
+    calls:
+      - [setOption, ['has_parent', true]]
+      - [setTemplate, ['ZfViewBundle::layout.phtml']]
 
   templating.engine.zf_view:
     alias: bez.zf_view.engine
