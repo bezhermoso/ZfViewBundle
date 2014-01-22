@@ -57,6 +57,7 @@ class ViewHelpersPass implements CompilerPassInterface
         $viewHelpers = $container->findTaggedServiceIds('zend.view_helper');
 
         foreach ($viewHelpers as $id => $tags) {
+
             foreach ($tags as $attributes) {
 
                 $attributes = $this->resolveViewHelperAttributes($attributes);
@@ -64,7 +65,9 @@ class ViewHelpersPass implements CompilerPassInterface
                 if(null == $attributes['alias']) {
 
                     $helperDef = $container->getDefinition($id);
-                    $attributes['alias'] = lcfirst(basename($helperDef->getClass()));
+
+                    $attributes['alias'] = lcfirst(substr($helperDef->getClass(), strrpos($helperDef->getClass(), '\\') + 1));
+
                     //throw new \RuntimeException(sprintf('An alias attribute must be specified in all view helpers. None given for service "%s".', $id));
                 }
 
@@ -99,7 +102,9 @@ class ViewHelpersPass implements CompilerPassInterface
                 if(null == $attributes['alias']) {
 
                     $helperDef = $container->getDefinition($id);
-                    $attributes['alias'] = lcfirst(basename($helperDef->getClass()));
+
+                    $attributes['alias'] = lcfirst(substr($helperDef->getClass(), strrpos($helperDef->getClass(), '\\') + 1));
+
                     //throw new \RuntimeException(sprintf('An alias attribute must be specified in all view helpers. None given for service "%s".', $id));
                 }
 
