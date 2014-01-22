@@ -144,8 +144,28 @@ class FooController
 }
 
 ```
+###Defining the layout within templates
 
-###Template names
+This is certainly useful when you wish to substitute templates used by third-party bundles through your application configuration.
+
+In your template file:
+```php
+<?php
+
+/* path/to/some.phtml */
+
+$this->layout('FooBundle::responsive.phtml'); //Define the layout file to use.
+
+$this->placeholder('sidebar')->captureStart();
+    
+    /* Display stuff */
+    
+$this->placeholder('sidebar')->captureEnd();
+
+```
+
+
+##Template names
 
 As you can see in the above examples, you can omit the `format` part in naming your `phtml` templates. That is, `FooBundle:Controller:template.phtml` is equivalent to `FooBundle:Controller:template.html.phtml`. 
 
