@@ -65,4 +65,4 @@ services:
     arguments: ["@service_container"]
     scope: request
     tags:
-      - { name: view_helper, alias: layout }
+      - { name: view_helper, alias: layout2 }

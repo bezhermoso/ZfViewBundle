@@ -5,4 +5,4 @@ services:
   debug.bez.zf_view.engine:
     class: %bez.zf_view.engine.class.timed%
     arguments:
-      ["@bez.zf_view", "@bez.zf_view.resolver.aggregate", "@service_container", "@debug.stopwatch"]
+      ["@bez.zf_view", "@bez.zf_view.resolver.aggregate", "@service_container", "@bez.zf_view.helper_manager", "@debug.stopwatch"]

@@ -111,31 +111,28 @@ class KernelListener implements EventSubscriberInterface
 
             $this->eventManager->trigger('render', $event);
 
-            $viewModel = $this->container->get('bez.view_model');
-            $viewModel->setVariables($results);
-            $viewModel->setTemplate($rendering->getTemplate());
-            $viewModel->setOption('formatAs', $rendering->getFormat());
+            $child = new ViewModel($results);
+            $child->setTemplate($rendering->getTemplate());
 
-            if ($rendering->getLayout() != null && strtolower($rendering->getLayout()) != 'none') {
-                $layout($rendering->getLayout());
+
+            if ($rendering->hasLayout()) {
+                $viewModel = $this->container->get('bez.view_model');
+                $viewModel->setTemplate($rendering->getLayout());
+                $viewModel->addChild($child);
+                $viewModel->setOption('rendering', $rendering);
+            } else {
+                $viewModel = $child;
+                $viewModel->setTerminal(true);
             }
 
-        } elseif ($results instanceof ViewModel) {
-            $viewModel = $results;
-        }
-
-
-        if ($layout->getLayout()) {
-            $template = new ViewModel();
-            $template->setTemplate($layout->getLayout());
-            $template->addChild($viewModel);
-            $viewModel = $template;
-            unset($template);
-        }
-
-        if(null !== $viewModel) {
-            $response = $this->engine->renderResponse($viewModel);
+            $response = $this->engine->renderResponse($viewModel, $results, $event->getResponse());
             $event->setResponse($response);
+
+        } elseif ($results instanceof ViewModel) {
+
+            $response = $this->engine->renderResponse($results, array(), $event->getResponse());
+            $event->setResponse($response);
+
         }
     }
 
@@ -167,6 +164,10 @@ class KernelListener implements EventSubscriberInterface
                 $methodRenderingConfig->setTemplate($name->getLogicalName());
             }
         }
+
+        /** @var $viewModel \Zend\View\Helper\ViewModel */
+        $viewModel = $this->plugins->get('view_model');
+        $viewModel->setRoot($this->container->get('bez.view_model'));
 
         $request->attributes->set('__rendering', $methodRenderingConfig);
     }

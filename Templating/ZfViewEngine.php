@@ -8,11 +8,15 @@
 
 namespace Bez\ZfViewBundle\Templating;
 
+use Bez\ZfViewBundle\Configuration\Rendering;
+use Bez\ZfViewBundle\View\Helper\Layout;
+use Bez\ZfViewBundle\View\PluginManagerInterface;
 use Bez\ZfViewBundle\Zend\Stdlib\Request;
 use Bez\ZfViewBundle\Zend\Stdlib\Response;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\GlobalVariables;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Zend\EventManager\EventManager;
 use Zend\View\Exception\RuntimeException;
 use Zend\View\Model\ViewModel;
 use Zend\View\Resolver\ResolverInterface;
@@ -39,16 +43,20 @@ class ZfViewEngine implements EngineInterface
 
     protected $result;
 
+    protected $plugins;
+
     /**
      * @param View $view
      * @param ResolverInterface $resolver
      * @param ContainerInterface $container
+     * @param \Bez\ZfViewBundle\View\PluginManagerInterface $plugins
      * @param GlobalVariables $globals
      */
     public function __construct(
         View $view,
         ResolverInterface $resolver,
         ContainerInterface $container,
+        PluginManagerInterface $plugins,
         GlobalVariables $globals = null
     ) {
 
@@ -56,6 +64,7 @@ class ZfViewEngine implements EngineInterface
         $this->globals = array();
         $this->resolver = $resolver;
         $this->container = $container;
+        $this->plugins = $plugins;
 
         if (null !== $globals) {
             $this->addGlobal('app', $globals);
@@ -79,32 +88,6 @@ class ZfViewEngine implements EngineInterface
         return $this;
     }
 
-    /**
-     * Renders a template.
-     *
-     * @param mixed $name A template name or a TemplateReferenceInterface instance
-     * @param array $parameters An array of parameters to pass to the template
-     *
-     * @throws \Exception
-     * @throws \Zend\View\Exception\RuntimeException
-     * @throws \Exception
-     * @return string The evaluated template as a string
-     *
-     * @api
-     */
-    public function render($name, array $parameters = array())
-    {
-        try {
-
-            $data = array_merge((array) $this->getGlobals(), $parameters);
-            $this->view->render($name, $data);
-
-        } catch(RuntimeException $e) {
-            throw $e;
-        } catch(\Exception $e) {
-            throw $e;
-        }
-    }
 
     /**
      * Returns true if the template exists.
@@ -155,21 +138,34 @@ class ZfViewEngine implements EngineInterface
      * @param string $view
      * @param array $parameters
      * @param SfResponse $sfResponse
+     * @internal param \Bez\ZfViewBundle\Configuration\Rendering $rendering
+     * @internal param \Bez\ZfViewBundle\Configuration\Rendering $rendering
+     * @internal param bool $useRendering
      * @return SfResponse
      */
     public function renderResponse($view, array $parameters = array(), SfResponse $sfResponse = NULL)
     {
-        if(!$view instanceof ViewModel) {
-            return;
+        /** @var $layout Layout */
+
+        if (is_string($view)) {
+
+            $result = $this->render($view, $parameters);
+
+        } elseif ($view instanceof ViewModel) {
+            $viewModel = $view;
+            $viewModel->setVariables($parameters);
+            $result = $this->render($viewModel);
         }
 
-        $variables = $view->getVariables();
-        $view->setVariables(array_merge($this->getGlobals(), (array) $variables));
 
         if (null === $sfResponse) {
             $sfResponse = new SfResponse();
         }
 
+        $sfResponse->setContent($result);
+
+        return $sfResponse;
+        /*
         $response = new Response($sfResponse);
         $this->view->setResponse($response);
 
@@ -177,8 +173,69 @@ class ZfViewEngine implements EngineInterface
         $request = new Request($sfRequest);
 
         $this->view->setRequest($request);
-        $this->render($view, $parameters);
+        $this->view->render($viewModel, $parameters);
+        */
 
-        return $sfResponse;
+    }
+
+    /**
+     * Renders a template.
+     *
+     * @param mixed $name A template name or a TemplateReferenceInterface instance
+     * @param array $parameters An array of parameters to pass to the template
+     *
+     * @param bool $isRoot
+     * @throws \InvalidArgumentException
+     * @return string The evaluated template as a string
+     *
+     * @api
+     */
+    public function render($name, array $parameters = array(), $isRoot = null)
+    {
+        if (is_string($name)) {
+
+            $root = new ViewModel();
+            $root->setTemplate('ZfViewBundle::layout.phtml');
+
+            $prevRoot = $this->getModelHelper()->getRoot();
+            $this->getModelHelper()->setRoot($root);
+
+            $viewModel = new ViewModel();
+            $viewModel->setTemplate($name);
+            $viewModel->setVariables($parameters);
+
+            $root->addChild($viewModel);
+            $viewModel = $root;
+
+        } elseif ($name instanceof ViewModel) {
+            $viewModel = $name;
+            $viewModel->setVariables($parameters);
+        } else {
+            throw new \InvalidArgumentException(
+                                sprintf(
+                                    'Expected string or instance of Zend\View\Model\ViewModel. %s given.',
+                                    get_class($name)
+                                ));
+        }
+
+        $viewModel->setVariables($this->getGlobals());
+
+        $viewModel->setOption('has_parent', true);
+        $result = $this->view->render($viewModel);
+
+        if (is_string($name)) {
+            $this->getModelHelper()->setRoot($prevRoot);
+        }
+
+        return $result;
+
+    }
+
+    /**
+     * @return \Zend\View\Helper\ViewModel
+     */
+    private function getModelHelper()
+    {
+        return $this->plugins->get('view_model');
     }
 }

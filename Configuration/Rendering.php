@@ -74,4 +74,9 @@ class Rendering
             $this->setTemplate($rendering->getTemplate());
 
     }
+
+    public function hasLayout()
+    {
+        return ($this->getLayout() && strtolower($this->getLayout()) != 'none');
+    }
 } 

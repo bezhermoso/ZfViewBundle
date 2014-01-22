@@ -28,7 +28,7 @@ class Layout extends AbstractHelper
      * @return ViewModel
      * @throws \DomainException
      */
-    public function getViewModel()
+    public function getRoot()
     {
         if (!$this->container->has('bez.view_model')) {
             throw new \DomainException('No view model has been assigned for this request yet.');
@@ -39,7 +39,7 @@ class Layout extends AbstractHelper
 
     public function __invoke($layout)
     {
-        $this->layout = (string) $layout;
+        $this->getRoot()->setTemplate((string) $layout);
     }
 
     public function getLayout()

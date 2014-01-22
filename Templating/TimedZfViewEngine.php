@@ -9,6 +9,7 @@
 namespace Bez\ZfViewBundle\Templating;
 
 
+use Bez\ZfViewBundle\View\PluginManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\GlobalVariables;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Stopwatch\Stopwatch;
@@ -24,11 +25,12 @@ class TimedZfViewEngine extends ZfViewEngine
         View $view,
         ResolverInterface $resolver,
         ContainerInterface $container,
+        PluginManagerInterface $plugins,
         Stopwatch $stopwatch,
         GlobalVariables $globals = null
     ) {
 
-        parent::__construct($view, $resolver, $container, $globals);
+        parent::__construct($view, $resolver, $container, $plugins, $globals);
         $this->stopwatch = $stopwatch;
 
     }
