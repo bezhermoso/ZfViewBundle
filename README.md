@@ -3,6 +3,9 @@ ZfViewBundle
 
 Brings the Zend\View templating paradigm of composite views and view helpers within your Symfony2 project.
 
+_2014-01-22 update:_
+* `$container->get('templating')->renderResponse('path/to/template.phtml', array $vars)` should now be working as expected.
+
 ##Installation
 
 You can install this bundle via Composer:
